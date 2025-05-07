@@ -3,7 +3,7 @@ title: "Hard thing about hard things - Ben Horowitz"
 draft: false
 tags:
   - book
-  - business_book
+  - business
   - 2025
 publishedDate: 2025-04-17
 ---
