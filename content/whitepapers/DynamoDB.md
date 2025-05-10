@@ -3,6 +3,7 @@ title: "Notes - Amazon DynamoDB - Distributed NoSQL database"
 draft: false
 tags:
   - whitepapers
+  - database
   - 2025
 ---
 
