@@ -41,6 +41,35 @@ CRDB guarantees fault tolerance and high availability through replication of dat
   - For longer-term failures, CRDB automatically creates new replicas of under-replicated Ranges (using the unaffected replicas as sources), and determines placement as described in the next section. The node liveness data and cluster metrics required to make this determination are disseminated across the cluster using a peer-to-peer gossip protocol.
 - **Replica placement**. CRDB has both manual and automatic mechanisms to control replica placement.
 
+### Transactions
+CRDB transactions can span the entire key space, touching data resident across a distributed cluster while providing ACID guarantees. CRDB uses a variation of multi-version concurrency control (MVCC) to provide serializable isolation
+CRDB transactions can span the entire key space, touching data resident across a distributed cluster while providing ACID guarantees. CRDB uses a variation of multi-version concurrency control (MVCC) to provide serializable isolation
+
+#### Transaction coordinator:
+The coordinator receives a series of requested KV operations from the SQL layer. the coordinator employs two important optimizations: *Write
+Pipelining* and *Parallel Commits*. Write Pipelining allows returning a result without waiting for the replication of the current operation, and Parallel Commits lets the commit operation and the write pipeline replicate in parallel. Combined, they allow many multi-statement SQL transactions to complete with the latency of just one round of replication
+```
+Algorithm 1: Transaction Coordinator
+1. inflightOps ← ∅, txnTimestamp ← now()
+2. for op ← KV operation received from SQL layer
+3. op.ts ← txnTimestamp
+4.  if op.commit
+5.    op.deps ← inflightOps
+6.  else
+7.   op.deps ← { x ∈ inflightOps | x.key = op.key }
+8.   inflightOps ← (inflightOps − op.deps) ∪ { op }
+9.  resp ← SendToLeaseholder(op)
+10. if resp.ts > op.ts
+11.   if op.key unchanged over (txnTimestamp, resp.ts]
+12.     txnTimestamp ← resp.ts
+13.   else
+14.   return transaction failed
+15. send resp to SQL layer
+16. if op.commit
+17.   asynchonously notify leaseholder to commit
+```
+
+
 
 ### Footnotes
 1. <a id="fn1"></a>CockroachDB<a href="#fnref1">↩︎</a>
