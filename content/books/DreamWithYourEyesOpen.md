@@ -9,6 +9,12 @@ tags:
 
 ### Theme
 
+Ronnie shared his experiences about the businesses he had operates in like cable-TV, UTV, Movies etc, book mainly focus on below themes
+  - Pursuing dreams with clarity and courage
+  - Building and scaling ventures
+  - Learning from failure and challenges
+  - Reinvention and Adaptability
+  - Leadership and Team building
 
 ### Highlights
 
@@ -39,3 +45,15 @@ tags:
 - Insulating yourself against failure doesn't ensure success; it only makes success more elusive. To learn from failure, you have to be able to define it, benchmark it and put it in its proper perspective. [Page - 87]
 - Failure isn't always about things going horribly wrong or not to plan. Failure is often about missed opportunities and unfortunate timing, both of which can be life-changing events in the destiny of a company, its employees and its shareholders. [Page - 89]
 - No one enjoys setbacks, but bumps in the road beleaguer all of us at some point and contribute to our continued growth as entrepreneurs and leaders. You and your organization can never learn and evolve to the next level without setbacks and failures. It's in your DNA to take risks, make mistakes and even fail, provided you don't repeat andy error in judgement twice. Remember this, and the highs will be even higher and a lot of fun. [Page - 92]
+- If failure is the most difficult obstacle for aspiring entrepreneurs, your greatest attribute is your ability and willingness to stay the course. In business, things won't always go your way. People will question your every decision and insist that the direction you've chosen won't allow you to reach your goals. Your competitors will strike mercilessly when they sense a weakness. Staying the course isn't the most complicated business philosophy you'll come across, but it is the Holy Grail of business. [Page - 95]
+- Staying the course is a conscious strategy and helps you achieve those goals that would have been out of your reach had you called it a day [Page -98]
+- Success comes from thorough preparation and positioning in the early stages; absolute commitment to an idea and laser focus on your goals; the ability to build credibility for you and your team; and the confidence that comes from acting with determination and with a clear, uncluttered mind. [Page -98]
+- The secret to working through difficult situations-wether these are wih teachers,rivals,competitors, friends or parents-is to never show that they bother you. Level your gaze beyond the horizon. Life is too short to allow others to make you feel inadequate. [Page - 99]
+- In startups and mature business, your ability to spot potential trouble is critical, saving you time, energy and grief in the long run. Lose your focus for a minute, though and those trucks will run you over before you know what's happened. [Page - 107]
+- You don't have to be the smartest person in the room to be a great leader, just the one who knows the most about every aspect of your organization and can make decisions based on its best interest. The discipline required is relentless analysis. [Page - 113]
+- At all stages of your journey, you need to downplay the idea of luck as a necessary ingredient for building strong businesses. Rather, the real source of success is people who generate their own breaks by working hard and focusing on a goal. [Page - 117]
+- A common concern from those not to the manor born is that others have a massive advantage when it comes to starting and growing a business-they  have wealth,no worries and all the freedom in the world to do what they choose! Stop wasting your time worrying about what everyone has and realize that, at more than one stage in your career or business cycle, you'll find yourself in the right place at the right time. Maybe wealth gives one person a leg up on another who has to work hard to score in that first round. But money only helps cushion that start. Wealth in no way ensures success. Life is about the next ten years and more, not just today and the law of averages works for each of us-leaders, professionals, entrepreneurs. [Page - 119]
+- Inequality is given. You can take inequality as a challenge, or move on, because it never goes way completely. To be honest, that's not necessarily bad news. [Page - 127]
+- Life and business are messy. Neither boils down to a spreadsheet not foreshadows myriad unexpected and unforeseeable twists and turns. People look for perfection that doesn't exist, neat and tidy ways of creating and nurturing business that won't cause them discomfort, but will provide astronomical returns. Exists aren't about giving up, they're about seizing opportunities. If you think you're abandoning anything when you exit a business, you're fooling yourself and forgetting why you became an entrepreneur. [Page - 137]
+- In life, as in sports, your second innings will depend a lot upon your first-what you've learnt and absorbed along the way and how you've used, and will use, those learnings moving forward. The mistaken assumption, though, is that a second innings can only be meaningful if you're left a mark or created wealth in your first. Absolutely not!. [Page - 145]
+- Time and tide move in strange, shifting, wonderful ways to transform you and your thinking, your priorities and perspectives on life. Once you let your guard down and allow the thoughts to flow, you discover more about where you are, where you want to be and what really excites you. [Page - 146]
