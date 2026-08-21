@@ -5,7 +5,17 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    Component.ConditionalRender({
+      component: Component.RecentNotes({
+        title: "Latest notes",
+        limit: 4,
+        showTags: true,
+        filter: (f) => f.slug !== "index",
+      }),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+  ],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/imabg",
@@ -22,7 +32,10 @@ export const defaultContentPageLayout: PageLayout = {
       condition: (page) => page.fileData.slug !== "index",
     }),
     Component.ArticleTitle(),
-    Component.ContentMeta(),
+    Component.ConditionalRender({
+      component: Component.ContentMeta(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
     Component.TagList(),
   ],
   left: [
@@ -42,7 +55,12 @@ export const defaultContentPageLayout: PageLayout = {
   ],
   right: [
     Component.Graph(),
-    Component.DesktopOnly(Component.TableOfContents()),
+    Component.DesktopOnly(
+      Component.ConditionalRender({
+        component: Component.TableOfContents(),
+        condition: (page) => page.fileData.slug !== "index",
+      }),
+    ),
     Component.Backlinks(),
   ],
 }

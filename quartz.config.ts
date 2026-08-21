@@ -9,7 +9,7 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "Abhay Goswami",
-    pageTitleSuffix: "Backend developer focused on distributed systems and databases",
+    pageTitleSuffix: " — Backend developer focused on distributed systems and databases",
     enableSPA: true,
     enablePopovers: true,
     analytics: null,
