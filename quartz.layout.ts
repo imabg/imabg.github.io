@@ -7,11 +7,15 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   afterBody: [
     Component.ConditionalRender({
+      component: Component.GoodreadsShelves({ mode: "currently-reading" }),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+    Component.ConditionalRender({
       component: Component.RecentNotes({
         title: "Latest notes",
         limit: 4,
         showTags: true,
-        filter: (f) => f.slug !== "index",
+        filter: (f) => f.slug !== "index" && !f.slug?.endsWith("/index"),
       }),
       condition: (page) => page.fileData.slug === "index",
     }),
@@ -19,7 +23,8 @@ export const sharedPageComponents: SharedLayout = {
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/imabg",
-      "Twitter": "https://x.com/iamabhaygoswami"
+      Twitter: "https://x.com/iamabhaygoswami",
+      Goodreads: "https://www.goodreads.com/user/show/190374561-abhay-goswami",
     },
   }),
 }
@@ -67,7 +72,15 @@ export const defaultContentPageLayout: PageLayout = {
 
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [
+    Component.Breadcrumbs(),
+    Component.ArticleTitle(),
+    Component.ContentMeta(),
+    Component.ConditionalRender({
+      component: Component.GoodreadsShelves({ mode: "full" }),
+      condition: (page) => page.fileData.slug === "books/index",
+    }),
+  ],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),

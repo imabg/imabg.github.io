@@ -88,6 +88,14 @@ const config: QuartzConfig = {
       Plugin.NotFoundPage(),
       // Comment out CustomOgImages to speed up build time
       Plugin.CustomOgImages(),
+      Plugin.Goodreads({
+        userId: "190374561",
+        shelves: [
+          { id: "currently-reading", label: "Currently reading", limit: 20 },
+          { id: "read", label: "Recently finished", limit: 24 },
+          { id: "to-read", label: "Want to read", limit: 24 },
+        ],
+      }),
     ],
   },
 }
