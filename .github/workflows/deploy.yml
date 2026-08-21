@@ -5,8 +5,8 @@ on:
     branches:
       - master
   schedule:
-    # Refresh Goodreads shelves without waiting for a content push
-    - cron: "0 */6 * * *"
+    # Refresh Goodreads shelves weekly without waiting for a content push
+    - cron: "0 0 * * 0"
   workflow_dispatch:
 
 permissions:
