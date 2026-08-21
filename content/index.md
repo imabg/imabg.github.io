@@ -31,7 +31,7 @@ This site is my digital garden: short notes from things I read and watch, so I c
 
 ## Explore
 
-- **[[books|Books]]** — reading notes from business, fiction, and whatever I'm in the middle of
+- **[[books|Books]]** — live Goodreads shelves plus reading notes from business, fiction, and whatever I'm in the middle of
 - **[[notes|Notes]]** — engineering notes, including talks like [[solid-go|SOLID principles in Go]]
 - **[[whitepapers|Whitepapers]]** — paper notes on systems like [[BigTable]] and [[DynamoDB]]
 - **[[podcasts|Podcasts]]** — takeaways from episodes worth keeping
@@ -40,4 +40,5 @@ This site is my digital garden: short notes from things I read and watch, so I c
 
 - [GitHub](https://github.com/imabg)
 - [Twitter](https://x.com/iamabhaygoswami)
+- [Goodreads](https://www.goodreads.com/user/show/190374561-abhay-goswami)
 - [Bio](https://bio.link/imabg?source_utm=imabg.in)
