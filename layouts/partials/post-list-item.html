@@ -1,5 +1,9 @@
 {{ $type := partial "post-type.html" . }}
-<li data-type="{{ $type }}">
+{{ $tagNames := slice }}
+{{ range .GetTerms "tags" }}
+  {{ $tagNames = $tagNames | append .Name }}
+{{ end }}
+<li data-type="{{ $type }}" data-tags="{{ delimit $tagNames " " }}">
   <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02-01-2006" }}</time>
   <span class="post-item">
     <a class="post-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>

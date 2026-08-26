@@ -4,6 +4,17 @@
   </header>
   {{ $pages := .Pages }}
   {{ if $pages }}
+    {{ $byName := dict }}
+    {{ range $pages }}
+      {{ range .GetTerms "tags" }}
+        {{ $byName = merge $byName (dict .Name .) }}
+      {{ end }}
+    {{ end }}
+    {{ $tagNames := slice }}
+    {{ range $name, $_ := $byName }}
+      {{ $tagNames = $tagNames | append $name }}
+    {{ end }}
+    {{ $tagNames = sort $tagNames }}
     <div class="writing-archive" data-writing-archive>
       <aside class="writing-filters">
         <div class="filter-group" role="group" aria-label="Filter by type">
@@ -15,6 +26,17 @@
             <button type="button" class="filter-btn" data-type-filter="misc" aria-pressed="false">Misc</button>
           </div>
         </div>
+        {{ if $tagNames }}
+          <div class="filter-group" role="group" aria-label="Filter by tag">
+            <h2>Tags</h2>
+            <div class="filter-options">
+              <button type="button" class="filter-btn" data-tag-filter="" aria-pressed="true">All</button>
+              {{ range $tagNames }}
+                <button type="button" class="filter-btn" data-tag-filter="{{ . }}" aria-pressed="false">#{{ . | lower }}</button>
+              {{ end }}
+            </div>
+          </div>
+        {{ end }}
       </aside>
       <div class="writing-results">
         <ul class="post-list">
