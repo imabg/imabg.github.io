@@ -1,0 +1,11 @@
+# Papers, books, and articles you are in the middle of.
+# Goodreads currently-reading books are fetched separately at build time.
+#
+# type: paper | book | article
+items:
+  - title: "MapReduce: Simplified Data Processing on Large Clusters"
+    authors: "Dean and Ghemawat"
+    type: paper
+    url: "https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf"
+    source: OSDI 2004
+    started: 2026-08

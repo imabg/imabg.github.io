@@ -1,0 +1,8 @@
+{{ $v := . }}
+{{- if reflect.IsMap $v -}}
+  {{- with index $v "#text" -}}{{ . }}{{- else -}}
+    {{- with index $v "-innerxml" -}}{{ . }}{{- else -}}{{ $v }}{{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- $v -}}
+{{- end -}}
