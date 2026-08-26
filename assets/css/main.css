@@ -351,10 +351,6 @@ body:has(.writing-archive) .wrap {
   --max: 50rem;
 }
 
-.writing-filters .filter-group + .filter-group {
-  margin-top: 1.2rem;
-}
-
 .writing-filters h2 {
   margin-bottom: 0.35rem;
 }
@@ -509,9 +505,5 @@ body:has(.writing-archive) .wrap {
     flex-wrap: wrap;
     gap: 0.2rem 0.85rem;
     align-items: baseline;
-  }
-
-  .writing-filters .filter-group + .filter-group {
-    margin-top: 0.85rem;
   }
 }
