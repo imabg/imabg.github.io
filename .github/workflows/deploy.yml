@@ -16,7 +16,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 defaults:
   run:
@@ -49,7 +49,7 @@ jobs:
       - name: Build
         run: |
           hugo version
-          hugo build --gc --minify
+          hugo build --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
