@@ -212,8 +212,6 @@ h2 {
 }
 
 .post-tags {
-  font-size: 0.78rem;
-  line-height: 1.4;
   color: var(--muted);
 }
 
@@ -223,10 +221,6 @@ h2 {
 
 .hashtag:hover {
   color: var(--accent);
-}
-
-.meta .post-tags {
-  font-size: inherit;
 }
 
 .meta .post-tags::before {
