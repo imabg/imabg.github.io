@@ -3,7 +3,7 @@
     <header class="page-header">
       <h1>{{ .Title }}</h1>
       <p class="meta">
-        {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2 Jan 2006" }}</time>{{ end }}
+        {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "02-01-2006" }}</time>{{ end }}
         {{ with .Params.categories }}
           <span class="sep">·</span>
           {{ range . }}<a class="pill" href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}

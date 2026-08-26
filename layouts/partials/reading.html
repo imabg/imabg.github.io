@@ -4,32 +4,31 @@
   {{ with hugo.Data.reading }}
     {{ with .items }}{{ $manual = . }}{{ end }}
   {{ end }}
-  {{ if $manual }}
+  {{ $papers := slice }}
+  {{ $books := slice }}
+  {{ range $manual }}
+    {{ $kind := .type | default "item" }}
+    {{ if eq $kind "book" }}
+      {{ $books = $books | append . }}
+    {{ else }}
+      {{ $papers = $papers | append . }}
+    {{ end }}
+  {{ end }}
+
+  {{ if $papers }}
+    <h3>Papers &amp; articles</h3>
     <ul class="reading-list">
-      {{ range $manual }}
-        {{ $kind := .type | default "item" }}
-        <li class="reading-row reading-{{ $kind }}">
-          {{ if eq $kind "book" }}
-            {{ if .cover }}
-              <img class="reading-cover" src="{{ .cover }}" alt="" width="48" height="72" loading="lazy">
-            {{ else }}
-              <span class="reading-cover reading-cover-fallback" aria-hidden="true"></span>
-            {{ end }}
-          {{ else }}
-            <span class="reading-kind">{{ $kind }}</span>
-          {{ end }}
-          <div class="reading-meta">
-            {{ if .url }}
-              <a href="{{ .url }}">{{ .title }}</a>
-            {{ else }}
-              <span class="reading-title">{{ .title }}</span>
-            {{ end }}
-            <p>
-              {{ with .authors }}<span>{{ . }}</span>{{ end }}
-              {{ with .source }}<span class="muted">{{ . }}</span>{{ end }}
-            </p>
-          </div>
-        </li>
+      {{ range $papers }}
+        {{ partial "reading-row.html" . }}
+      {{ end }}
+    </ul>
+  {{ end }}
+
+  <h3>Books</h3>
+  {{ if $books }}
+    <ul class="reading-list">
+      {{ range $books }}
+        {{ partial "reading-row.html" . }}
       {{ end }}
     </ul>
   {{ end }}

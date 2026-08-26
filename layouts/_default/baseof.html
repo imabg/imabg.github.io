@@ -11,5 +11,10 @@
       </main>
       {{ partial "footer.html" . }}
     </div>
+    {{ $theme := resources.Get "js/theme.js" }}
+    {{ if hugo.IsProduction }}
+      {{ $theme = $theme | minify | fingerprint }}
+    {{ end }}
+    <script src="{{ $theme.RelPermalink }}" defer{{ if hugo.IsProduction }} integrity="{{ $theme.Data.Integrity }}"{{ end }}></script>
   </body>
 </html>

@@ -1,0 +1,58 @@
+{{ define "main" }}
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+  </header>
+  {{ $pages := .Pages }}
+  {{ if $pages }}
+    {{ $byName := dict }}
+    {{ range $pages }}
+      {{ range .GetTerms "tags" }}
+        {{ $byName = merge $byName (dict .Name .) }}
+      {{ end }}
+    {{ end }}
+    {{ $tagNames := slice }}
+    {{ range $name, $_ := $byName }}
+      {{ $tagNames = $tagNames | append $name }}
+    {{ end }}
+    {{ $tagNames = sort $tagNames }}
+    <div class="writing-archive" data-writing-archive>
+      <aside class="writing-filters">
+        <div class="filter-group" role="group" aria-label="Filter by type">
+          <h2>Type</h2>
+          <div class="filter-options">
+            <button type="button" class="filter-btn" data-type-filter="" aria-pressed="true">All</button>
+            <button type="button" class="filter-btn" data-type-filter="paper" aria-pressed="false">Research paper</button>
+            <button type="button" class="filter-btn" data-type-filter="book" aria-pressed="false">Book</button>
+            <button type="button" class="filter-btn" data-type-filter="misc" aria-pressed="false">Misc</button>
+          </div>
+        </div>
+        {{ if $tagNames }}
+          <div class="filter-group" role="group" aria-label="Filter by tag">
+            <h2>Tags</h2>
+            <div class="filter-options">
+              <button type="button" class="filter-btn" data-tag-filter="" aria-pressed="true">All</button>
+              {{ range $tagNames }}
+                <button type="button" class="filter-btn" data-tag-filter="{{ . }}" aria-pressed="false">#{{ . | lower }}</button>
+              {{ end }}
+            </div>
+          </div>
+        {{ end }}
+      </aside>
+      <div class="writing-results">
+        <ul class="post-list">
+          {{ range $pages }}
+            {{ partial "post-list-item.html" . }}
+          {{ end }}
+        </ul>
+        <p class="muted filter-empty" data-filter-empty hidden>No posts match these filters.</p>
+      </div>
+    </div>
+    {{ $js := resources.Get "js/archive.js" }}
+    {{ if hugo.IsProduction }}
+      {{ $js = $js | minify | fingerprint }}
+    {{ end }}
+    <script src="{{ $js.RelPermalink }}" defer{{ if hugo.IsProduction }} integrity="{{ $js.Data.Integrity }}"{{ end }}></script>
+  {{ else }}
+    <p class="muted">Nothing here yet.</p>
+  {{ end }}
+{{ end }}
