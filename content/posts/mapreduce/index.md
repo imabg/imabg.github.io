@@ -1,5 +1,5 @@
 ---
-title: "Notes — Google MapReduce"
+title: "Google MapReduce"
 date: 2026-08-21
 draft: false
 tags: ["whitepapers", "distributed-systems"]
@@ -10,10 +10,6 @@ aliases:
 ---
 
 **Paper:** [MapReduce: Simplified Data Processing on Large Clusters](https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf)
-
-## Overview
-
-- Nothing fancy is done by the master, just a map of machines and location of files
 
 ## Execution / shuffle-sort
 

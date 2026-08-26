@@ -3,9 +3,13 @@
 #
 # type: paper | book | article
 items:
-  - title: "MapReduce: Simplified Data Processing on Large Clusters"
-    authors: "Dean and Ghemawat"
+  - title: "Understanding the limitation of pubsub systems"
     type: paper
-    url: "https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf"
-    source: OSDI 2004
-    started: 2026-08
+    url: "https://dl.acm.org/doi/pdf/10.1145/3713082.3730397"
+    source: SoCC 2026
+    started: 2026-08-26
+  - title: "Designing Data-Intensive Applications"
+    type: book
+    url: "https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321"
+    source: O'Reilly
+    started: 2026-07-01
