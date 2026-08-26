@@ -1,6 +1,6 @@
-# imabg.in
+# imabg.github.io
 
-Personal site for [Abhay Goswami](https://imabg.in). Notes and updates on backend systems, plus what I’m currently reading.
+Personal site for [Abhay Goswami](https://imabg.github.io). Notes and updates on backend systems, plus what I’m currently reading.
 
 Built with [Hugo](https://gohugo.io/). GitHub Pages deploys on every push to `master`, and again every Sunday so the Goodreads shelf stays current.
 

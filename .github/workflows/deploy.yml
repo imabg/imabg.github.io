@@ -49,7 +49,7 @@ jobs:
       - name: Build
         run: |
           hugo version
-          hugo build --gc --minify
+          hugo build --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
@@ -66,14 +66,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      # Actions-based Pages ignores static/CNAME. Re-bind the custom domain
-      # after each publish so imabg.in keeps serving the new site.
-      - name: Bind custom domain
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api -X PUT "repos/${{ github.repository }}/pages" \
-            -f cname='imabg.in' \
-            -F https_enforced=true \
-            -f build_type='workflow'
