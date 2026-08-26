@@ -1,0 +1,44 @@
+baseURL = "https://imabg.in/"
+title = "Abhay Goswami"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+summaryLength = 24
+pagination.pagerSize = 20
+disableHugoGeneratorInject = true
+
+[params]
+  author = "Abhay Goswami"
+  description = "Backend developer focused on distributed systems and databases."
+  goodreadsUserId = "190374561"
+  github = "https://github.com/imabg"
+  twitter = "https://x.com/iamabhaygoswami"
+  goodreads = "https://www.goodreads.com/user/show/190374561-abhay-goswami"
+
+[menus]
+  [[menus.main]]
+    name = "Writing"
+    pageRef = "/posts/"
+    weight = 1
+  [[menus.main]]
+    name = "RSS"
+    url = "/index.xml"
+    weight = 2
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  noClasses = true
+  style = "github"
+  lineNos = false
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[permalinks]
+  posts = "/posts/:contentbasename/"
+
+[security.http]
+  methods = ["(?i)GET"]
+  mediaTypes = ["application/.*", "text/.*"]

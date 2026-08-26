@@ -1,0 +1,72 @@
+{{ $userId := site.Params.goodreadsUserId }}
+{{ $books := slice }}
+{{ $status := "missing" }}
+{{ if $userId }}
+  {{ $url := printf "https://www.goodreads.com/review/list_rss/%s?shelf=currently-reading&per_page=20" $userId }}
+  {{ $opts := dict
+      "timeout" "15s"
+      "headers" (dict
+        "User-Agent" "Mozilla/5.0 (compatible; imabg.in Goodreads sync; +https://imabg.in)"
+        "Accept" "application/rss+xml, application/xml, text/xml, */*"
+      )
+  }}
+  {{ with try (resources.GetRemote $url $opts) }}
+    {{ with .Err }}
+      {{ warnf "Goodreads currently-reading fetch failed: %s" . }}
+      {{ $status = "error" }}
+    {{ else with .Value }}
+      {{ with try (.Content | transform.Unmarshal) }}
+        {{ with .Err }}
+          {{ warnf "Goodreads RSS parse failed: %s" . }}
+          {{ $status = "error" }}
+        {{ else with .Value }}
+          {{ $status = "empty" }}
+          {{ with .channel.item }}
+            {{ if reflect.IsSlice . }}
+              {{ $books = . }}
+            {{ else }}
+              {{ $books = slice . }}
+            {{ end }}
+            {{ if $books }}{{ $status = "ok" }}{{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      {{ warnf "Goodreads currently-reading returned nothing" }}
+      {{ $status = "error" }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if eq $status "ok" }}
+  <ul class="reading-list">
+    {{ range $books }}
+      {{ $title := partial "xml-text.html" .title }}
+      {{ $author := partial "xml-text.html" .author_name }}
+      {{ $cover := partial "xml-text.html" .book_large_image_url }}
+      {{ if not $cover }}{{ $cover = partial "xml-text.html" .book_medium_image_url }}{{ end }}
+      {{ $id := partial "xml-text.html" .book_id }}
+      {{ $href := partial "xml-text.html" .link }}
+      {{ if $id }}{{ $href = printf "https://www.goodreads.com/book/show/%s" $id }}{{ end }}
+      <li class="reading-row reading-book">
+        {{ if $cover }}
+          <img class="reading-cover" src="{{ $cover }}" alt="" width="48" height="72" loading="lazy">
+        {{ else }}
+          <span class="reading-cover reading-cover-fallback" aria-hidden="true"></span>
+        {{ end }}
+        <div class="reading-meta">
+          {{ if $href }}
+            <a href="{{ $href }}" rel="noopener noreferrer">{{ $title }}</a>
+          {{ else }}
+            <span class="reading-title">{{ $title }}</span>
+          {{ end }}
+          {{ with $author }}<p>{{ . }}</p>{{ end }}
+        </div>
+      </li>
+    {{ end }}
+  </ul>
+{{ else if eq $status "empty" }}
+  <p class="muted">Nothing on the Goodreads currently-reading shelf right now.</p>
+{{ else if eq $status "error" }}
+  <p class="muted">Couldn’t refresh books from Goodreads. They’ll update on the next site build.</p>
+{{ end }}

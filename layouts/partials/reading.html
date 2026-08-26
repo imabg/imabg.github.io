@@ -1,0 +1,36 @@
+<section class="reading" id="currently-reading">
+  <h2>Currently reading</h2>
+  {{ $manual := slice }}
+  {{ with hugo.Data.reading }}
+    {{ with .items }}{{ $manual = . }}{{ end }}
+  {{ end }}
+  {{ $papers := slice }}
+  {{ $books := slice }}
+  {{ range $manual }}
+    {{ $kind := .type | default "item" }}
+    {{ if eq $kind "book" }}
+      {{ $books = $books | append . }}
+    {{ else }}
+      {{ $papers = $papers | append . }}
+    {{ end }}
+  {{ end }}
+
+  {{ if $papers }}
+    <h3>Papers &amp; articles</h3>
+    <ul class="reading-list">
+      {{ range $papers }}
+        {{ partial "reading-row.html" . }}
+      {{ end }}
+    </ul>
+  {{ end }}
+
+  <h3>Books</h3>
+  {{ if $books }}
+    <ul class="reading-list">
+      {{ range $books }}
+        {{ partial "reading-row.html" . }}
+      {{ end }}
+    </ul>
+  {{ end }}
+  {{ partial "goodreads.html" . }}
+</section>

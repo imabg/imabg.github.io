@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+  </header>
+  {{ $pages := .Pages }}
+  {{ if $pages }}
+    <ul class="post-list">
+      {{ range $pages }}
+        {{ partial "post-list-item.html" . }}
+      {{ end }}
+    </ul>
+  {{ else }}
+    <p class="muted">Nothing here yet.</p>
+  {{ end }}
+{{ end }}
