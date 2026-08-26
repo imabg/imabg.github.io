@@ -1,5 +1,5 @@
 ---
-title: "Notes — Google Bigtable"
+title: "Google Bigtable"
 date: 2026-08-21
 draft: false
 tags: ["whitepapers", "distributed-systems"]

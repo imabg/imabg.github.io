@@ -1,5 +1,5 @@
 ---
-title: "Notes — Amazon Dynamo"
+title: "Amazon Dynamo"
 date: 2025-05-04
 draft: false
 tags: ["whitepapers", "distributed-systems"]
