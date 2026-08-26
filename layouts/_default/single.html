@@ -8,9 +8,7 @@
           <span class="sep">·</span>
           {{ range . }}<a class="pill" href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}
         {{ end }}
-        {{ with .Params.tags }}
-          {{ range . }}<a class="pill" href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}
-        {{ end }}
+        {{ partial "post-tags.html" . }}
       </p>
     </header>
     <div class="prose">

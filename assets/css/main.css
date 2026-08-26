@@ -211,17 +211,27 @@ h2 {
   color: var(--accent);
 }
 
-.post-item-tags {
-  font-size: 0.75rem;
+.post-tags {
+  font-size: 0.78rem;
   line-height: 1.4;
+  color: var(--muted);
 }
 
-.post-item-tags .pill {
-  margin-right: 0.35rem;
+.hashtag {
+  color: var(--muted);
 }
 
-.post-item-tags .pill:last-child {
-  margin-right: 0;
+.hashtag:hover {
+  color: var(--accent);
+}
+
+.meta .post-tags {
+  font-size: inherit;
+}
+
+.meta .post-tags::before {
+  content: "·";
+  margin: 0 0.35rem 0 0.15rem;
 }
 
 .post-list time,

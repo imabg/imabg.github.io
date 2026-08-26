@@ -1,0 +1,8 @@
+{{ with .GetTerms "tags" }}
+  <span class="post-tags">
+    {{- range $i, $tag := . -}}
+      {{- if $i }}, {{ end -}}
+      <a class="hashtag" href="{{ $tag.RelPermalink }}">#{{ $tag.Name | lower }}</a>
+    {{- end -}}
+  </span>
+{{ end }}
