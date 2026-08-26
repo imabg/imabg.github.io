@@ -9,10 +9,7 @@
     {{ if $posts }}
       <ul class="post-list">
         {{ range first 8 $posts }}
-          <li>
-            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-          </li>
+          {{ partial "post-list-item.html" . }}
         {{ end }}
       </ul>
       {{ if gt (len $posts) 8 }}
