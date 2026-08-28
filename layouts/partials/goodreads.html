@@ -38,35 +38,28 @@
   {{ end }}
 {{ end }}
 
-{{ if eq $status "ok" }}
-  <ul class="reading-list">
-    {{ range $books }}
-      {{ $title := partial "xml-text.html" .title }}
-      {{ $author := partial "xml-text.html" .author_name }}
-      {{ $cover := partial "xml-text.html" .book_large_image_url }}
-      {{ if not $cover }}{{ $cover = partial "xml-text.html" .book_medium_image_url }}{{ end }}
-      {{ $id := partial "xml-text.html" .book_id }}
-      {{ $href := partial "xml-text.html" .link }}
-      {{ if $id }}{{ $href = printf "https://www.goodreads.com/book/show/%s" $id }}{{ end }}
-      <li class="reading-row reading-book">
-        {{ if $cover }}
-          <img class="reading-cover" src="{{ $cover }}" alt="" width="48" height="72" loading="lazy">
-        {{ else }}
-          <span class="reading-cover reading-cover-fallback" aria-hidden="true"></span>
-        {{ end }}
-        <div class="reading-meta">
-          {{ if $href }}
-            {{ partial "external-link.html" (dict "href" $href "text" $title) }}
-          {{ else }}
-            <span class="reading-title">{{ $title }}</span>
-          {{ end }}
-          {{ with $author }}<p>{{ . }}</p>{{ end }}
-        </div>
-      </li>
-    {{ end }}
-  </ul>
-{{ else if eq $status "empty" }}
-  <p class="muted">Nothing on the Goodreads currently-reading shelf right now.</p>
-{{ else if eq $status "error" }}
-  <p class="muted">Couldn’t refresh books from Goodreads. They’ll update on the next site build.</p>
+{{ if or (eq $status "ok") (eq $status "empty") (eq $status "error") }}
+<div class="reading-group">
+  <h3>Goodreads</h3>
+  {{ if eq $status "ok" }}
+    <ul class="reading-list">
+      {{ range $books }}
+        {{ $title := partial "xml-text.html" .title }}
+        {{ $author := partial "xml-text.html" .author_name }}
+        {{ $cover := partial "xml-text.html" .book_large_image_url }}
+        {{ if not $cover }}{{ $cover = partial "xml-text.html" .book_medium_image_url }}{{ end }}
+        {{ $id := partial "xml-text.html" .book_id }}
+        {{ $href := partial "xml-text.html" .link }}
+        {{ if $id }}{{ $href = printf "https://www.goodreads.com/book/show/%s" $id }}{{ end }}
+        {{ $row := dict "type" "book" "title" $title "url" $href "authors" $author "cover" $cover }}
+        {{ partial "reading-row.html" $row }}
+      {{ end }}
+    </ul>
+  {{ else if eq $status "empty" }}
+    <p class="muted">Nothing on the Goodreads currently-reading shelf right now.</p>
+  {{ else }}
+    <p class="muted">Couldn’t refresh books from Goodreads. They’ll update on the next site build.</p>
+  {{ end }}
+</div>
 {{ end }}
+
