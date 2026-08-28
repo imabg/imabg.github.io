@@ -2,6 +2,9 @@
 <script>
 (function () {
   try {
+    var palettes = { paper: 1, nord: 1, solarized: 1, catppuccin: 1 };
+    var palette = localStorage.getItem("theme-palette");
+    if (palettes[palette]) document.documentElement.setAttribute("data-palette", palette);
     var t = localStorage.getItem("theme");
     if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
   } catch (e) {}

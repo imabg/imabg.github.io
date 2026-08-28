@@ -1,9 +1,11 @@
-# Papers, books, and articles you are in the middle of.
-# Goodreads currently-reading books are fetched separately at build time.
-#
-# type: paper | book | article
-# For papers, set drive: to a Google Drive PDF URL (https://drive.google.com/file/d/FILE_ID/view).
-# Titles link to on-site notes when a matching paper page has a body; otherwise they open drive.
 items:
+  - title: "Docker Deep Dive by Nigel Poulton"
+    type: book
+    url: "https://www.amazon.in/dp/9355427220/?bestFormat=true&k=docker%20deep%20dive%20by%20nigel%20poulton&ref_=nb_sb_ss_w_scx-ent-bk-v2_k0_1_11_de&crid=1P4NWP9UIWZ1F&sprefix=docker%20deep"
+    source: Apress
+  - title: "Designing Data-Intensive Applications"
+    type: book
+    url: "https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321"
+    source: O'Reilly
 
   

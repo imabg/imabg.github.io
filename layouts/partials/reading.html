@@ -16,21 +16,26 @@
   {{ end }}
 
   {{ if $papers }}
-    <h3>Papers &amp; articles</h3>
-    <ul class="reading-list">
-      {{ range $papers }}
-        {{ partial "reading-row.html" . }}
-      {{ end }}
-    </ul>
+    <div class="reading-group">
+      <h3>Papers &amp; articles</h3>
+      <ul class="reading-list">
+        {{ range $papers }}
+          {{ partial "reading-row.html" . }}
+        {{ end }}
+      </ul>
+    </div>
   {{ end }}
 
-  <h3>Books</h3>
-  {{ if $books }}
-    <ul class="reading-list">
-      {{ range $books }}
-        {{ partial "reading-row.html" . }}
-      {{ end }}
-    </ul>
-  {{ end }}
   {{ partial "goodreads.html" . }}
+
+  {{ if $books }}
+    <div class="reading-group">
+      <h3>Other books</h3>
+      <ul class="reading-list">
+        {{ range $books }}
+          {{ partial "reading-row.html" . }}
+        {{ end }}
+      </ul>
+    </div>
+  {{ end }}
 </section>

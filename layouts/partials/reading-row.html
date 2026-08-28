@@ -1,12 +1,8 @@
 {{ $kind := .type | default "item" }}
 <li class="reading-row reading-{{ $kind }}">
-  {{ if eq $kind "book" }}
-    {{ if .cover }}
-      <img class="reading-cover" src="{{ .cover }}" alt="" width="48" height="72" loading="lazy">
-    {{ else }}
-      <span class="reading-cover reading-cover-fallback" aria-hidden="true"></span>
-    {{ end }}
-  {{ else }}
+  {{ if and (eq $kind "book") .cover }}
+    <img class="reading-cover" src="{{ .cover }}" alt="" width="48" height="72" loading="lazy">
+  {{ else if ne $kind "book" }}
     <span class="reading-kind">{{ $kind }}</span>
   {{ end }}
   <div class="reading-meta">
