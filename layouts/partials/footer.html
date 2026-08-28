@@ -1,8 +1,8 @@
 <footer class="site-footer">
   <p>&copy; {{ now.Year }} {{ site.Params.author }}</p>
   <nav aria-label="Elsewhere">
-    {{ with site.Params.github }}<a href="{{ . }}" rel="me">GitHub</a>{{ end }}
-    {{ with site.Params.twitter }}<a href="{{ . }}" rel="me">Twitter</a>{{ end }}
-    {{ with site.Params.goodreads }}<a href="{{ . }}" rel="me">Goodreads</a>{{ end }}
+    {{ with site.Params.github }}{{ partial "external-link.html" (dict "href" . "text" "GitHub" "relMe" true) }}{{ end }}
+    {{ partial "social-links.html" . }}
+    {{ with site.Params.goodreads }}{{ partial "external-link.html" (dict "href" . "text" "Goodreads" "relMe" true) }}{{ end }}
   </nav>
 </footer>

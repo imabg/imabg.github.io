@@ -7,6 +7,7 @@ categories: ["papers"]
 aliases:
   - /whitepapers/MapReduce
   - /whitepapers/MapReduce/
+drive: "https://drive.google.com/file/d/REPLACE_ME_MAPREDUCE/view"
 ---
 
 **Paper:** [MapReduce: Simplified Data Processing on Large Clusters](https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf)

@@ -10,8 +10,23 @@
     <span class="reading-kind">{{ $kind }}</span>
   {{ end }}
   <div class="reading-meta">
-    {{ if .url }}
-      <a href="{{ .url }}">{{ .title }}</a>
+    {{ if eq $kind "paper" }}
+      {{ $dest := partial "paper-dest.html" . }}
+      {{ if $dest.href }}
+        {{ if $dest.internal }}
+          <a href="{{ $dest.href }}">{{ .title }}</a>
+        {{ else }}
+          {{ partial "external-link.html" (dict "href" $dest.href "text" .title) }}
+        {{ end }}
+      {{ else }}
+        <span class="reading-title">{{ .title }}</span>
+      {{ end }}
+    {{ else if .url }}
+      {{ if partial "is-external.html" .url }}
+        {{ partial "external-link.html" (dict "href" .url "text" .title) }}
+      {{ else }}
+        <a href="{{ .url }}">{{ .title }}</a>
+      {{ end }}
     {{ else }}
       <span class="reading-title">{{ .title }}</span>
     {{ end }}

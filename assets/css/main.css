@@ -177,6 +177,10 @@ html[data-theme="light"] .theme-toggle .icon-moon {
   letter-spacing: -0.03em;
 }
 
+.site-nav {
+  align-items: center;
+}
+
 .site-nav a,
 .site-footer a {
   color: var(--muted);
@@ -186,6 +190,55 @@ html[data-theme="light"] .theme-toggle .icon-moon {
 .site-nav a + a,
 .site-footer a + a {
   margin-left: 0.9rem;
+}
+
+.site-footer nav {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.12rem;
+}
+
+.social-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  display: block;
+}
+
+.ext-icon {
+  width: 0.72em;
+  height: 0.72em;
+  display: inline-block;
+  margin-inline-start: 0.12em;
+  vertical-align: 0.08em;
+  opacity: 0.72;
+}
+
+.social-link .ext-icon {
+  width: 0.68rem;
+  height: 0.68rem;
+  margin-inline-start: 0;
+  vertical-align: unset;
+}
+
+a:hover .ext-icon {
+  opacity: 1;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .site-nav a[aria-current="page"] {

@@ -1,0 +1,6 @@
+{{- with site.Params.linkedin -}}
+  {{- partial "external-link.html" (dict "href" . "class" "social-link" "relMe" true "icon" "linkedin" "ariaLabel" "LinkedIn (opens in a new tab)") -}}
+{{- end -}}
+{{- with site.Params.twitter -}}
+  {{- partial "external-link.html" (dict "href" . "class" "social-link" "relMe" true "icon" "twitter" "ariaLabel" "Twitter (opens in a new tab)") -}}
+{{- end -}}
