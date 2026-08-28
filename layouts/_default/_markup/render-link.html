@@ -1,0 +1,6 @@
+{{- $dest := .Destination -}}
+{{- if partial "is-external.html" $dest -}}
+  {{- partial "external-link.html" (dict "href" $dest "text" .Text "title" .Title) -}}
+{{- else -}}
+  <a href="{{ $dest | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- end -}}

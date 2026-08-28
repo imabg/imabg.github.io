@@ -2,7 +2,16 @@
 <li data-type="{{ $type }}">
   <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02-01-2006" }}</time>
   <span class="post-item">
-    <a class="post-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{ if eq $type "paper" }}
+      {{ $dest := partial "paper-dest.html" . }}
+      {{ if $dest.internal }}
+        <a class="post-item-title" href="{{ $dest.href }}">{{ .Title }}</a>
+      {{ else }}
+        {{ partial "external-link.html" (dict "href" $dest.href "text" .Title "class" "post-item-title") }}
+      {{ end }}
+    {{ else }}
+      <a class="post-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+    {{ end }}
     {{ partial "post-tags.html" . }}
   </span>
 </li>

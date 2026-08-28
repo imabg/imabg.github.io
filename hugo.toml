@@ -11,6 +11,7 @@ disableHugoGeneratorInject = true
   description = "Backend developer focused on distributed systems and databases."
   goodreadsUserId = "190374561"
   github = "https://github.com/imabg"
+  linkedin = "https://www.linkedin.com/in/abhay676/"
   twitter = "https://x.com/iamabhaygoswami"
   goodreads = "https://www.goodreads.com/user/show/190374561-abhay-goswami"
 
@@ -19,10 +20,6 @@ disableHugoGeneratorInject = true
     name = "Writing"
     pageRef = "/posts/"
     weight = 1
-  [[menus.main]]
-    name = "RSS"
-    url = "/index.xml"
-    weight = 2
 
 [markup.goldmark.renderer]
   unsafe = true
@@ -33,8 +30,8 @@ disableHugoGeneratorInject = true
   lineNos = false
 
 [outputs]
-  home = ["HTML", "RSS"]
-  section = ["HTML", "RSS"]
+  home = ["HTML"]
+  section = ["HTML"]
 
 [permalinks]
   posts = "/posts/:contentbasename/"

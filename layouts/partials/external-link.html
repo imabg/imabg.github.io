@@ -1,0 +1,7 @@
+{{- $rel := "noopener noreferrer" -}}
+{{- if .relMe -}}{{- $rel = printf "%s me" $rel -}}{{- end -}}
+<a href="{{ .href | safeURL }}"{{ with .class }} class="{{ . }}"{{ end }}{{ with .title }} title="{{ . }}"{{ end }} target="_blank" rel="{{ $rel }}"{{ with .ariaLabel }} aria-label="{{ . }}"{{ end }}>{{- if eq .icon "linkedin" -}}
+<svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z"/></svg>
+{{- else if eq .icon "twitter" -}}
+<svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.24 2H21.5l-7.5 8.57L22.9 22h-6.55l-5.13-6.7L5.7 22H2.42l8.02-9.16L1.4 2h6.72l4.64 6.13L18.24 2zm-1.15 18h1.8L7.08 3.91H5.15L17.09 20z"/></svg>
+{{- end -}}{{- with .text -}}{{ . | safeHTML }}{{- end -}}{{- partial "external-icon.html" (dict "omitOpensLabel" (isset . "ariaLabel")) -}}</a>

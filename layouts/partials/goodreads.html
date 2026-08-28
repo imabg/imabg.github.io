@@ -56,7 +56,7 @@
         {{ end }}
         <div class="reading-meta">
           {{ if $href }}
-            <a href="{{ $href }}" rel="noopener noreferrer">{{ $title }}</a>
+            {{ partial "external-link.html" (dict "href" $href "text" $title) }}
           {{ else }}
             <span class="reading-title">{{ $title }}</span>
           {{ end }}

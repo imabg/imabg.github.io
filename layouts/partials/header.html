@@ -5,6 +5,7 @@
       {{ range site.Menus.main }}
         <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
       {{ end }}
+      {{ partial "social-links.html" . }}
     </nav>
     <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle color theme">
       <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">

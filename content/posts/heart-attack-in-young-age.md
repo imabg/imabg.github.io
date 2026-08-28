@@ -38,5 +38,5 @@ aliases:
 
 ### Links
 
-<a href="https://www.youtube.com/watch?v=Evt_Mm5bwpU" target="_blank">YT video</a>
-<a href="https://open.spotify.com/episode/2nWvOQBzYV1dBR8HH0rl7C?si=098be017529b454b" target="_blank">Spotify</a>
+[YT video](https://www.youtube.com/watch?v=Evt_Mm5bwpU)
+[Spotify](https://open.spotify.com/episode/2nWvOQBzYV1dBR8HH0rl7C?si=098be017529b454b)

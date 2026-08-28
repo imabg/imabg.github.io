@@ -1,0 +1,53 @@
+{{- $href := "" -}}
+{{- $internal := false -}}
+{{- if reflect.IsMap . -}}
+  {{- $item := . -}}
+  {{- $drive := $item.drive | default $item.pdf -}}
+  {{- $url := $item.url -}}
+  {{- $pageRef := $item.page | default "" -}}
+  {{- $title := $item.title | default "" -}}
+  {{- range site.RegularPages -}}
+    {{- $cats := .Params.categories | default slice -}}
+    {{- if in $cats "papers" -}}
+      {{- $match := false -}}
+      {{- if and $title (eq .Title $title) -}}
+        {{- $match = true -}}
+      {{- end -}}
+      {{- if $pageRef -}}
+        {{- if or (eq .RelPermalink $pageRef) (eq .Path $pageRef) -}}
+          {{- $match = true -}}
+        {{- end -}}
+        {{- with .File -}}
+          {{- if eq .ContentBaseName $pageRef -}}
+            {{- $match = true -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if and $match (partial "has-content.html" .) -}}
+        {{- $href = .RelPermalink -}}
+        {{- $internal = true -}}
+        {{- break -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $internal -}}
+    {{- with $drive -}}
+      {{- $href = . -}}
+    {{- else -}}
+      {{- with $url -}}
+        {{- $href = . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- $drive := .Params.drive | default .Params.pdf -}}
+  {{- $isPaper := eq (partial "post-type.html" .) "paper" -}}
+  {{- $hasContent := partial "has-content.html" . -}}
+  {{- if and $isPaper (not $hasContent) $drive -}}
+    {{- $href = $drive -}}
+  {{- else -}}
+    {{- $href = .RelPermalink -}}
+    {{- $internal = true -}}
+  {{- end -}}
+{{- end -}}
+{{- return (dict "href" $href "internal" $internal) -}}

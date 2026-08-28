@@ -1,0 +1,3 @@
+{{- $u := urls.Parse . -}}
+{{- $host := (urls.Parse site.BaseURL).Host -}}
+{{- return (and $u.Host (ne $u.Host $host)) -}}

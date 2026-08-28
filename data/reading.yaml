@@ -2,14 +2,8 @@
 # Goodreads currently-reading books are fetched separately at build time.
 #
 # type: paper | book | article
+# For papers, set drive: to a Google Drive PDF URL (https://drive.google.com/file/d/FILE_ID/view).
+# Titles link to on-site notes when a matching paper page has a body; otherwise they open drive.
 items:
-  - title: "Understanding the limitation of pubsub systems"
-    type: paper
-    url: "https://dl.acm.org/doi/pdf/10.1145/3713082.3730397"
-    source: SoCC 2026
-    started: 2026-08-26
-  - title: "Designing Data-Intensive Applications"
-    type: book
-    url: "https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321"
-    source: O'Reilly
-    started: 2026-07-01
+
+  
