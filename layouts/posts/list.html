@@ -1,6 +1,14 @@
 {{ define "main" }}
   <header class="page-header">
     <h1>{{ .Title }}</h1>
+    <figure class="page-meme">
+      <img
+        src="{{ "memes/too-many-books.png" | relURL }}"
+        alt="Me when I remember how many good books are still left to read"
+        width="800"
+        height="883"
+      >
+    </figure>
   </header>
   {{ $pages := .Pages }}
   {{ if $pages }}

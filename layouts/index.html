@@ -1,6 +1,18 @@
 {{ define "main" }}
   <section class="intro">
-    {{ .Content }}
+    <figure class="intro-meme">
+      <img
+        src="{{ "memes/interview-born-young.png" | relURL }}"
+        alt="Unprepared interview answer: I was born at a very young age"
+        width="612"
+        height="500"
+      >
+      <figcaption class="visually-hidden">The unprepared take.</figcaption>
+    </figure>
+    <p class="intro-retry">Okay. Take two — the version with details.</p>
+    <div class="intro-answer">
+      {{ .Content }}
+    </div>
   </section>
   {{ partial "reading.html" . }}
   <section class="writing">
@@ -8,12 +20,12 @@
     {{ $posts := where site.RegularPages "Section" "posts" }}
     {{ if $posts }}
       <ul class="post-list">
-        {{ range first 8 $posts }}
+        {{ range first 5 $posts }}
           {{ partial "post-list-item.html" . }}
         {{ end }}
       </ul>
-      {{ if gt (len $posts) 8 }}
-        <p class="more"><a href="{{ "/posts/" | relURL }}">All writing</a></p>
+      {{ if gt (len $posts) 5 }}
+        <p class="more"><a href="{{ "/posts/" | relURL }}">See more</a></p>
       {{ end }}
     {{ else }}
       <p class="muted">No posts yet.</p>
