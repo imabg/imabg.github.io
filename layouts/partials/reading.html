@@ -1,5 +1,6 @@
 <section class="reading" id="currently-reading">
   <h2>Currently reading</h2>
+  <p class="section-lead">What is on the desk right now — papers, articles, and books in progress.</p>
   {{ $manual := slice }}
   {{ with hugo.Data.reading }}
     {{ with .items }}{{ $manual = . }}{{ end }}

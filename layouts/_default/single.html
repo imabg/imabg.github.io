@@ -1,6 +1,7 @@
 {{ define "main" }}
   <article class="post">
     <header class="page-header">
+      <p class="page-kicker">{{ with .Params.categories }}{{ index . 0 | humanize }}{{ else }}A note{{ end }}</p>
       <h1>{{ .Title }}</h1>
       <p class="meta">
         {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "02-01-2006" }}</time>{{ end }}

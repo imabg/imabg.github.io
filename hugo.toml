@@ -8,7 +8,8 @@ disableHugoGeneratorInject = true
 
 [params]
   author = "Abhay Goswami"
-  description = "Backend developer focused on distributed systems and databases."
+  description = "Reading notes on distributed systems, databases, and backend systems."
+  tagline = "Notes on systems, databases, and what I’m reading"
   goodreadsUserId = "190374561"
   github = "https://github.com/imabg"
   linkedin = "https://www.linkedin.com/in/abhay676/"
