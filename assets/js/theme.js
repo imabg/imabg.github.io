@@ -10,13 +10,23 @@
       var p = localStorage.getItem("theme-palette");
       if (palettes.indexOf(p) !== -1) return p;
     } catch (e) {}
-    return root.getAttribute("data-palette") || "paper";
+    return "paper";
+  }
+
+  function storedMode() {
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "dark" || t === "light") return t;
+    } catch (e) {}
+    return "";
+  }
+
+  function systemMode() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
   function effectiveMode() {
-    var t = root.getAttribute("data-theme");
-    if (t === "dark" || t === "light") return t;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return storedMode() || systemMode();
   }
 
   function persist(key, value) {
@@ -46,17 +56,29 @@
     );
   }
 
+  function applyPalette(name) {
+    var palette = palettes.indexOf(name) !== -1 ? name : "paper";
+    root.setAttribute("data-palette", palette);
+    return palette;
+  }
+
+  function applyMode(mode) {
+    if (mode === "dark" || mode === "light") {
+      root.setAttribute("data-theme", mode);
+    } else {
+      root.removeAttribute("data-theme");
+    }
+  }
+
   function setPalette(name) {
-    if (palettes.indexOf(name) === -1) return;
-    root.setAttribute("data-palette", name);
-    persist("theme-palette", name);
+    persist("theme-palette", applyPalette(name));
     syncPaletteUI();
     closeMenu();
   }
 
   function setMode(mode) {
-    root.setAttribute("data-theme", mode);
     persist("theme", mode);
+    applyMode(mode);
     syncModeUI();
   }
 
@@ -102,6 +124,15 @@
     });
   }
 
+  applyPalette(storedPalette());
+  applyMode(storedMode());
   syncPaletteUI();
   syncModeUI();
+
+  var systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+  var onSystemMode = function () {
+    if (!storedMode()) syncModeUI();
+  };
+  if (systemDark.addEventListener) systemDark.addEventListener("change", onSystemMode);
+  else if (systemDark.addListener) systemDark.addListener(onSystemMode);
 })();

@@ -7,7 +7,7 @@
         width="612"
         height="500"
       >
-      <figcaption class="visually-hidden">The unprepared take.</figcaption>
+      <figcaption>The unprepared take.</figcaption>
     </figure>
     <p class="intro-retry">Okay. Take two — the version with details.</p>
     <div class="intro-answer">
@@ -17,6 +17,7 @@
   {{ partial "reading.html" . }}
   <section class="writing">
     <h2>Writing</h2>
+    <p class="section-lead">Published notes on papers and systems.</p>
     {{ $posts := where site.RegularPages "Section" "posts" }}
     {{ if $posts }}
       <ul class="post-list">

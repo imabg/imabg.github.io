@@ -10,18 +10,18 @@
       {{ $dest := partial "paper-dest.html" . }}
       {{ if $dest.href }}
         {{ if $dest.internal }}
-          <a href="{{ $dest.href }}">{{ .title }}</a>
+          <a class="reading-title" href="{{ $dest.href }}"><cite>{{ .title }}</cite></a>
         {{ else }}
-          {{ partial "external-link.html" (dict "href" $dest.href "text" .title) }}
+          {{ partial "external-link.html" (dict "href" $dest.href "text" (printf "<cite>%s</cite>" .title) "class" "reading-title") }}
         {{ end }}
       {{ else }}
-        <span class="reading-title">{{ .title }}</span>
+        <cite class="reading-title">{{ .title }}</cite>
       {{ end }}
     {{ else if .url }}
       {{ if partial "is-external.html" .url }}
-        {{ partial "external-link.html" (dict "href" .url "text" .title) }}
+        {{ partial "external-link.html" (dict "href" .url "text" .title "class" "reading-title") }}
       {{ else }}
-        <a href="{{ .url }}">{{ .title }}</a>
+        <a class="reading-title" href="{{ .url }}">{{ .title }}</a>
       {{ end }}
     {{ else }}
       <span class="reading-title">{{ .title }}</span>

@@ -1,5 +1,14 @@
 <header class="site-header">
-  <a class="site-title" href="{{ "/" | relURL }}">{{ site.Title }}</a>
+  <div class="masthead">
+    {{ if .IsHome }}
+      <h1 class="site-title"><a href="{{ "/" | relURL }}">{{ site.Title }}</a></h1>
+    {{ else }}
+      <p class="site-title"><a href="{{ "/" | relURL }}">{{ site.Title }}</a></p>
+    {{ end }}
+    {{ with site.Params.tagline }}
+      <p class="site-tagline">{{ . }}</p>
+    {{ end }}
+  </div>
   <div class="site-header-end">
     <nav class="site-nav" aria-label="Main">
       {{ range site.Menus.main }}
@@ -18,25 +27,25 @@
         </button>
         <ul id="palette-menu" class="palette-menu" role="listbox" hidden>
           <li>
-            <button type="button" role="option" data-palette="paper">
+            <button type="button" role="option" data-palette="paper" aria-selected="true">
               <span class="palette-swatch" aria-hidden="true"></span>
               Paper
             </button>
           </li>
           <li>
-            <button type="button" role="option" data-palette="nord">
+            <button type="button" role="option" data-palette="nord" aria-selected="false">
               <span class="palette-swatch" aria-hidden="true"></span>
               Nord
             </button>
           </li>
           <li>
-            <button type="button" role="option" data-palette="solarized">
+            <button type="button" role="option" data-palette="solarized" aria-selected="false">
               <span class="palette-swatch" aria-hidden="true"></span>
               Solarized
             </button>
           </li>
           <li>
-            <button type="button" role="option" data-palette="catppuccin">
+            <button type="button" role="option" data-palette="catppuccin" aria-selected="false">
               <span class="palette-swatch" aria-hidden="true"></span>
               Catppuccin
             </button>
