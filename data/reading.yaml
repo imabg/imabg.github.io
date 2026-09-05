@@ -1,4 +1,12 @@
 items:
+  - title: "Life beyond Distributed Transactions"
+    type: paper
+    url: "https://queue.acm.org/doi/pdf/10.1145/3012426.3025012"
+    source: ACM Queue
+  - title: "Chain-of-thought prompting elicits reasoning in large language models"
+    type: paper
+    url: "https://arxiv.org/pdf/2201.11903"
+    source: arXiv
   - title: "Docker Deep Dive by Nigel Poulton"
     type: book
     url: "https://www.amazon.in/dp/9355427220/?bestFormat=true&k=docker%20deep%20dive%20by%20nigel%20poulton&ref_=nb_sb_ss_w_scx-ent-bk-v2_k0_1_11_de&crid=1P4NWP9UIWZ1F&sprefix=docker%20deep"
