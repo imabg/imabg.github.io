@@ -2,7 +2,7 @@
 title: "Amazon Dynamo"
 date: 2025-05-04
 draft: false
-tags: ["whitepapers", "distributed-systems"]
+tags: ["whitepapers", "databases"]
 categories: ["papers"]
 aliases:
   - /whitepapers/DynamoDB
