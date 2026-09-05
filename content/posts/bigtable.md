@@ -2,7 +2,7 @@
 title: "Google Bigtable"
 date: 2026-08-21
 draft: false
-tags: ["whitepapers", "distributed-systems"]
+tags: ["whitepapers", "databases"]
 categories: ["papers"]
 aliases:
   - /whitepapers/BigTable

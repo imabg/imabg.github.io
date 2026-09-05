@@ -1,8 +1,4 @@
 items:
-  - title: "Scalable lighting-fast temporal indexing"
-    type: paper
-    url: "https://link.springer.com/article/10.1007/s00778-026-00968-6"
-    source: Springer
   - title: "Docker Deep Dive by Nigel Poulton"
     type: book
     url: "https://www.amazon.in/dp/9355427220/?bestFormat=true&k=docker%20deep%20dive%20by%20nigel%20poulton&ref_=nb_sb_ss_w_scx-ent-bk-v2_k0_1_11_de&crid=1P4NWP9UIWZ1F&sprefix=docker%20deep"
