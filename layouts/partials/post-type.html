@@ -1,9 +1,0 @@
-{{- $type := "misc" -}}
-{{- with .Params.categories -}}
-  {{- if in . "papers" -}}
-    {{- $type = "paper" -}}
-  {{- else if in . "books" -}}
-    {{- $type = "book" -}}
-  {{- end -}}
-{{- end -}}
-{{- return $type -}}

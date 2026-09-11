@@ -6,29 +6,26 @@
     <span class="reading-kind">{{ $kind }}</span>
   {{ end }}
   <div class="reading-meta">
-    {{ if eq $kind "paper" }}
-      {{ $dest := partial "paper-dest.html" . }}
-      {{ if $dest.href }}
-        {{ if $dest.internal }}
-          <a class="reading-title" href="{{ $dest.href }}"><cite>{{ .title }}</cite></a>
-        {{ else }}
-          {{ partial "external-link.html" (dict "href" $dest.href "text" (printf "<cite>%s</cite>" .title) "class" "reading-title") }}
-        {{ end }}
-      {{ else }}
-        <cite class="reading-title">{{ .title }}</cite>
-      {{ end }}
-    {{ else if .url }}
+    {{ if .url }}
+      {{ $text := .title }}
+      {{ if eq $kind "paper" }}{{ $text = printf "<cite>%s</cite>" .title }}{{ end }}
       {{ if partial "is-external.html" .url }}
-        {{ partial "external-link.html" (dict "href" .url "text" .title "class" "reading-title") }}
+        {{ partial "external-link.html" (dict "href" .url "text" $text "class" "reading-title") }}
       {{ else }}
-        <a class="reading-title" href="{{ .url }}">{{ .title }}</a>
+        <a class="reading-title" href="{{ .url }}">{{ if eq $kind "paper" }}<cite>{{ .title }}</cite>{{ else }}{{ .title }}{{ end }}</a>
       {{ end }}
     {{ else }}
-      <span class="reading-title">{{ .title }}</span>
+      {{ if eq $kind "paper" }}
+        <cite class="reading-title">{{ .title }}</cite>
+      {{ else }}
+        <span class="reading-title">{{ .title }}</span>
+      {{ end }}
     {{ end }}
+    {{ if or .authors .source }}
     <p>
       {{ with .authors }}<span>{{ . }}</span>{{ end }}
       {{ with .source }}<span class="muted">{{ . }}</span>{{ end }}
     </p>
+    {{ end }}
   </div>
 </li>

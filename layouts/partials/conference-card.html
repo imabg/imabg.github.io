@@ -1,0 +1,11 @@
+<li class="conference-card">
+  <p class="conference-card-head">
+    {{ partial "external-link.html" (dict "href" .link "text" .title "class" "conference-card-title") }}
+    {{ with .year }}<span class="conference-year">{{ . }}</span>{{ end }}
+  </p>
+  {{ with .topics }}
+    <p class="conference-topics">
+      {{- range . -}}<span class="conference-chip">{{ . }}</span>{{- end -}}
+    </p>
+  {{ end }}
+</li>

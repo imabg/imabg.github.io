@@ -1,0 +1,127 @@
+body:has(.papers-archive) .wrap {
+  --max: 66rem;
+}
+
+.papers-preview,
+.papers-archive {
+  min-width: 0;
+}
+
+.papers-preview {
+  margin-top: 2.85rem;
+}
+
+.papers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.papers-archive .papers-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.paper-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  height: 100%;
+  min-width: 0;
+  padding: 1.15rem 1.2rem 1.25rem;
+  background: var(--canvas);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+}
+
+.paper-card-heading {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.5;
+  margin: 0;
+  padding-bottom: 0.12em;
+  overflow: visible;
+  text-rendering: geometricPrecision;
+  text-wrap: balance;
+}
+
+.paper-card-title {
+  color: var(--fg);
+}
+
+.paper-card-title:hover {
+  color: var(--accent);
+}
+
+.paper-card-authors {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.paper-card-meta {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.paper-card-venue {
+  font-style: italic;
+}
+
+.paper-card-year {
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  color: var(--accent);
+}
+
+.paper-card-venue + .paper-card-year::before {
+  content: " · ";
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.paper-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0.15rem 0 0;
+  padding: 0;
+}
+
+.paper-topic {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 0.14rem 0.45rem;
+}
+
+.paper-card-blurb {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .papers-archive .papers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .papers-grid,
+  .papers-archive .papers-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

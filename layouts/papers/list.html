@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+  </header>
+  {{ $papers := sort site.Data.papers "completedAt" "desc" }}
+  {{ with $papers }}
+    <div class="papers-archive">
+      <div class="papers-grid">
+        {{ range . }}
+          {{ partial "paper-card.html" . }}
+        {{ end }}
+      </div>
+    </div>
+  {{ else }}
+    <p class="muted">No papers yet.</p>
+  {{ end }}
+{{ end }}

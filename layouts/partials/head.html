@@ -3,14 +3,10 @@
 (function () {
   var root = document.documentElement;
   try {
-    var palettes = { paper: 1, nord: 1, solarized: 1, catppuccin: 1 };
-    var palette = localStorage.getItem("theme-palette");
-    root.setAttribute("data-palette", palettes[palette] ? palette : "paper");
     var t = localStorage.getItem("theme");
     if (t === "dark" || t === "light") root.setAttribute("data-theme", t);
     else root.removeAttribute("data-theme");
   } catch (e) {
-    root.setAttribute("data-palette", "paper");
     root.removeAttribute("data-theme");
   }
 })();
@@ -25,13 +21,22 @@
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta name="theme-color" content="#f3eee4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1a1713" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f4f4f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0d0c" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,500;9..144,1,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,ital,wght@8..60,0,400;8..60,0,600;8..60,0,700;8..60,1,400;8..60,1,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Syne:wght@500;600;700;800&display=swap">
 {{ $css := resources.Get "css/main.css" }}
 {{ if hugo.IsProduction }}
   {{ $css = $css | minify | fingerprint }}
 {{ end }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $css.Data.Integrity }}"{{ end }}>
+{{ range slice "css/home.css" "css/papers.css" "css/articles.css" "css/conferences.css" "css/tags.css" }}
+  {{ with resources.Get . }}
+    {{ $sheet := . }}
+    {{ if hugo.IsProduction }}
+      {{ $sheet = $sheet | minify | fingerprint }}
+    {{ end }}
+    <link rel="stylesheet" href="{{ $sheet.RelPermalink }}"{{ if hugo.IsProduction }} integrity="{{ $sheet.Data.Integrity }}"{{ end }}>
+  {{ end }}
+{{ end }}

@@ -1,0 +1,44 @@
+{{ define "main" }}
+  <header class="page-header tags-header">
+    <p class="tags-kicker">Index</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}
+      <div class="tags-lead">{{ . }}</div>
+    {{ end }}
+  </header>
+  {{ $counts := newScratch }}
+  {{ range $name, $pages := site.Taxonomies.tags }}
+    {{ $counts.Add ($name | urlize) (len $pages) }}
+  {{ end }}
+  {{ range site.Data.papers }}
+    {{ range .topics }}
+      {{ $counts.Add (. | urlize) 1 }}
+    {{ end }}
+  {{ end }}
+  {{ range site.Data.conferences }}
+    {{ range .topics }}
+      {{ $counts.Add (. | urlize) 1 }}
+    {{ end }}
+  {{ end }}
+  {{ $rows := slice }}
+  {{ range $key, $n := $counts.Values }}
+    {{ $rows = $rows | append (dict "key" $key "count" $n "label" ($key | humanize | title)) }}
+  {{ end }}
+  {{ $rows = sort $rows "label" }}
+  {{ $rows = sort $rows "count" "desc" }}
+  {{ if $rows }}
+    <ol class="tags-index">
+      {{ range $i, $row := $rows }}
+        <li>
+          <a href="{{ printf "/tags/%s/" $row.key | relURL }}">
+            <span class="tags-index-num">{{ printf "%02d" (add $i 1) }}</span>
+            <span class="tags-index-name">{{ $row.label }}</span>
+            <span class="tags-index-count">{{ $row.count }} {{ if eq (int $row.count) 1 }}item{{ else }}items{{ end }}</span>
+          </a>
+        </li>
+      {{ end }}
+    </ol>
+  {{ else }}
+    <p class="muted">Nothing tagged yet.</p>
+  {{ end }}
+{{ end }}

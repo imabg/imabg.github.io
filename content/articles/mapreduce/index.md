@@ -7,6 +7,8 @@ categories: ["papers"]
 aliases:
   - /whitepapers/MapReduce
   - /whitepapers/MapReduce/
+  - /posts/mapreduce
+  - /posts/mapreduce/
 drive: "https://drive.google.com/file/d/REPLACE_ME_MAPREDUCE/view"
 ---
 

@@ -1,0 +1,17 @@
+<article class="article-card">
+  <h3 class="article-card-heading">
+    <a class="article-card-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </h3>
+  {{ with .Date }}
+    <p class="article-card-meta">
+      <time class="article-card-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "02-01-2006" }}</time>
+    </p>
+  {{ end }}
+  {{ with .Params.tags }}
+    <ul class="article-topics">
+      {{ range . }}
+        <li class="article-topic">{{ . }}</li>
+      {{ end }}
+    </ul>
+  {{ end }}
+</article>

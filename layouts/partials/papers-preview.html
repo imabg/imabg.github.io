@@ -1,0 +1,14 @@
+<section class="papers-preview">
+  <h2>Papers</h2>
+  {{ $papers := sort site.Data.papers "completedAt" "desc" }}
+  {{ with $papers }}
+    <div class="papers-grid">
+      {{ range first 3 . }}
+        {{ partial "paper-card.html" . }}
+      {{ end }}
+    </div>
+    <p class="more"><a href="{{ "/papers/" | relURL }}">See all</a></p>
+  {{ else }}
+    <p class="muted">No papers yet.</p>
+  {{ end }}
+</section>

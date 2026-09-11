@@ -1,0 +1,17 @@
+{{ define "main" }}
+  {{ with resources.Get "css/conferences.css" }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+  {{ end }}
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+  </header>
+  {{ with site.Data.conferences }}
+    <ul class="conference-grid">
+      {{ range . }}
+        {{ partial "conference-card.html" . }}
+      {{ end }}
+    </ul>
+  {{ else }}
+    <p class="muted">No conferences yet.</p>
+  {{ end }}
+{{ end }}

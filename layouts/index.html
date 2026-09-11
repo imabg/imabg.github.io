@@ -1,35 +1,12 @@
 {{ define "main" }}
-  <section class="intro">
-    <figure class="intro-meme">
-      <img
-        src="{{ "memes/interview-born-young.png" | relURL }}"
-        alt="Unprepared interview answer: I was born at a very young age"
-        width="612"
-        height="500"
-      >
-      <figcaption>The unprepared take.</figcaption>
-    </figure>
-    <p class="intro-retry">Okay. Take two — the version with details.</p>
-    <div class="intro-answer">
+  <section class="hero">
+    <p class="hero-title">{{ .Title }}</p>
+    <div class="hero-bio">
       {{ .Content }}
     </div>
   </section>
   {{ partial "reading.html" . }}
-  <section class="writing">
-    <h2>Writing</h2>
-    <p class="section-lead">Published notes on papers and systems.</p>
-    {{ $posts := where site.RegularPages "Section" "posts" }}
-    {{ if $posts }}
-      <ul class="post-list">
-        {{ range first 5 $posts }}
-          {{ partial "post-list-item.html" . }}
-        {{ end }}
-      </ul>
-      {{ if gt (len $posts) 5 }}
-        <p class="more"><a href="{{ "/posts/" | relURL }}">See more</a></p>
-      {{ end }}
-    {{ else }}
-      <p class="muted">No posts yet.</p>
-    {{ end }}
-  </section>
+  {{ if templates.Exists "partials/papers-preview.html" }}{{ partial "papers-preview.html" . }}{{ end }}
+  {{ if templates.Exists "partials/articles-preview.html" }}{{ partial "articles-preview.html" . }}{{ end }}
+  {{ if templates.Exists "partials/conferences-preview.html" }}{{ partial "conferences-preview.html" . }}{{ end }}
 {{ end }}
