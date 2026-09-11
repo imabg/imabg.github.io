@@ -1,0 +1,116 @@
+.tags-kicker {
+  margin: 0 0 0.35rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.tags-header h1 {
+  margin-bottom: 0.45rem;
+}
+
+.tags-lead {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.tags-lead p {
+  margin: 0;
+}
+
+.tags-index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+
+.tags-index a {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr) auto;
+  gap: 0.85rem 1.1rem;
+  align-items: baseline;
+  padding: 1.05rem 0.35rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.tags-index a:hover {
+  color: inherit;
+  background: color-mix(in srgb, var(--fg) 5%, var(--canvas));
+}
+
+.tags-index a:hover .tags-index-name {
+  color: var(--accent);
+}
+
+.tags-index-num {
+  color: var(--accent);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+}
+
+.tags-index-name {
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 3.2vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+
+.tags-index-count {
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.tag-group + .tag-group {
+  margin-top: 2.6rem;
+}
+
+.tag-group h2 {
+  margin: 0 0 0.85rem;
+  color: var(--muted);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.tag-group .papers-archive,
+.tag-group .articles-archive {
+  min-width: 0;
+}
+
+.tag-group .papers-archive .papers-grid,
+.tag-group .articles-archive .articles-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 560px) {
+  .tags-index a {
+    grid-template-columns: 2.2rem minmax(0, 1fr);
+    padding: 0.95rem 0.15rem;
+  }
+
+  .tags-index-count {
+    grid-column: 2;
+    margin-top: -0.55rem;
+  }
+
+  .tag-group .papers-archive .papers-grid,
+  .tag-group .articles-archive .articles-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

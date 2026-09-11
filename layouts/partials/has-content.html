@@ -1,3 +1,0 @@
-{{- $raw := "" -}}
-{{- with .RawContent -}}{{- $raw = . -}}{{- end -}}
-{{- return (ne (strings.TrimSpace $raw) "") -}}

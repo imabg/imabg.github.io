@@ -1,0 +1,67 @@
+{{ define "main" }}
+  {{ $key := .Title | urlize }}
+  {{ $articles := where .Pages "Section" "articles" }}
+  {{ $articles = $articles.ByDate.Reverse }}
+  {{ $papers := slice }}
+  {{ range site.Data.papers }}
+    {{ $paper := . }}
+    {{ range $paper.topics }}
+      {{ if eq (. | urlize) $key }}
+        {{ $papers = $papers | append $paper }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $papers = sort $papers "completedAt" "desc" }}
+  {{ $conferences := slice }}
+  {{ range site.Data.conferences }}
+    {{ $conf := . }}
+    {{ range $conf.topics }}
+      {{ if eq (. | urlize) $key }}
+        {{ $conferences = $conferences | append $conf }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $conferences = sort $conferences "year" "desc" }}
+  <header class="page-header tags-header">
+    <p class="tags-kicker">Tag</p>
+    <h1>{{ .Title | humanize | title }}</h1>
+  </header>
+  {{ if or $articles $papers $conferences }}
+    {{ with $papers }}
+      <section class="tag-group" aria-labelledby="tag-papers">
+        <h2 id="tag-papers">Papers</h2>
+        <div class="papers-archive">
+          <div class="papers-grid">
+            {{ range . }}
+              {{ partial "paper-card.html" . }}
+            {{ end }}
+          </div>
+        </div>
+      </section>
+    {{ end }}
+    {{ with $articles }}
+      <section class="tag-group" aria-labelledby="tag-articles">
+        <h2 id="tag-articles">Articles</h2>
+        <div class="articles-archive">
+          <div class="articles-grid">
+            {{ range . }}
+              {{ partial "article-list-item.html" . }}
+            {{ end }}
+          </div>
+        </div>
+      </section>
+    {{ end }}
+    {{ with $conferences }}
+      <section class="tag-group" aria-labelledby="tag-conferences">
+        <h2 id="tag-conferences">Conferences</h2>
+        <ul class="conference-grid">
+          {{ range . }}
+            {{ partial "conference-card.html" . }}
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+  {{ else }}
+    <p class="muted">Nothing tagged yet.</p>
+  {{ end }}
+{{ end }}

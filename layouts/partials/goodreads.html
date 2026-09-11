@@ -39,7 +39,7 @@
 {{ end }}
 
 {{ if or (eq $status "ok") (eq $status "empty") (eq $status "error") }}
-<div class="reading-group">
+<div class="reading-group{{ if eq $status "ok" }} reading-shelf{{ end }}">
   <h3>Goodreads</h3>
   {{ if eq $status "ok" }}
     <ul class="reading-list">
@@ -62,4 +62,3 @@
   {{ end }}
 </div>
 {{ end }}
-

@@ -7,6 +7,8 @@ categories: ["notes"]
 aliases:
   - /notes/solid-go
   - /notes/solid-go/
+  - /posts/solid-go
+  - /posts/solid-go/
 ---
 
 **[Conference Link](https://www.youtube.com/watch?v=zzAdEt3xZ1M)**

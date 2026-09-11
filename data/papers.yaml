@@ -1,0 +1,30 @@
+- title: Google Bigtable
+  authors: Fay Chang et al.
+  venue: OSDI
+  topics: [databases]
+  url: https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf
+  completedAt: 2025-03-06
+- title: Google MapReduce
+  authors: Jeffrey Dean and Sanjay Ghemawat
+  venue: OSDI
+  topics: [distributed-systems]
+  url: https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf
+  completedAt: 2026-06-24
+- title: Amazon Dynamo
+  authors: Giuseppe DeCandia et al.
+  venue: SOSP
+  topics: [databases]
+  url: https://drive.google.com/file/d/1gFF_GK0n1e1A8DSDW-nW4rfCS1WEoJCX/view?usp=sharing
+  completedAt: 2025-11-06
+- title: Scalable lighting-fast temporal indexing
+  authors: ""
+  venue: ""
+  topics: [databases]
+  url: https://drive.google.com/file/d/1WRivJkxRVb2tRIhaezF3lg5t9cK84WYQ/view?usp=sharing
+  completedAt: 2026-09-06
+- title: Limitations of pubsub model
+  authors: ""
+  venue: ""
+  topics: [distributed-systems]
+  url: https://drive.google.com/file/d/1L4oMf0AHBGm1SkQmXhlIwpus2hzrvBMs/view?usp=sharing
+  completedAt: 2026-09-06

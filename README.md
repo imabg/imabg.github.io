@@ -14,13 +14,40 @@ hugo server
 
 Open http://localhost:1313/.
 
-## Write a post
+## Add a paper
 
-```bash
-hugo new posts/my-update.md
+Edit [`data/papers.yaml`](data/papers.yaml). It is a YAML list (`site.Data.papers`). Append an item:
+
+```yaml
+- title: Paper title
+  authors: Author names
+  venue: OSDI
+  year: 2006
+  topics: [databases]
+  url: https://example.com/paper.pdf
+  # blurb: optional one-liner
 ```
 
-Set `draft: false`, add a title and date, then put the file in `content/posts/`. Optional `tags` and `categories` (`papers`, `books`, `notes`, `podcasts`).
+`authors`, `venue`, and `year` may be empty. `blurb` is optional.
+
+## Write an article
+
+```bash
+hugo new articles/my-notes.md
+```
+
+Set `draft: false`, add a title and date. Files live in `content/articles/`. Optional `tags`. For a page bundle (notes plus images), use a folder with `index.md`.
+
+## Add a conference
+
+Edit [`data/conferences.yaml`](data/conferences.yaml). It is a YAML list. Append an item:
+
+```yaml
+- title: Conference Name
+  year: 2026
+  link: https://example.com
+  topics: [systems, go]
+```
 
 ## Currently reading
 

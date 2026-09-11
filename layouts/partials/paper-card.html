@@ -1,0 +1,28 @@
+<article class="paper-card">
+  <h3 class="paper-card-heading">
+    {{- if .url -}}
+      {{ partial "external-link.html" (dict "href" .url "text" .title "class" "paper-card-title") }}
+    {{- else -}}
+      <span class="paper-card-title">{{ .title }}</span>
+    {{- end -}}
+  </h3>
+  {{ with .authors }}
+    <p class="paper-card-authors">{{ if reflect.IsSlice . }}{{ delimit . ", " }}{{ else }}{{ . }}{{ end }}</p>
+  {{ end }}
+  {{ if or .venue .year }}
+    <p class="paper-card-meta">
+      {{ with .venue }}<span class="paper-card-venue">{{ . }}</span>{{ end }}
+      {{ with .year }}<span class="paper-card-year">{{ . }}</span>{{ end }}
+    </p>
+  {{ end }}
+  {{ with .topics }}
+    <ul class="paper-topics">
+      {{ range . }}
+        <li class="paper-topic">{{ . }}</li>
+      {{ end }}
+    </ul>
+  {{ end }}
+  {{ with .blurb }}
+    <p class="paper-card-blurb">{{ . }}</p>
+  {{ end }}
+</article>

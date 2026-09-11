@@ -1,0 +1,16 @@
+{{ with resources.Get "css/conferences.css" }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}">
+{{ end }}
+<section class="conferences-preview">
+  <h2>Conferences</h2>
+  {{ with site.Data.conferences }}
+    <ul class="conference-grid">
+      {{ range first 3 . }}
+        {{ partial "conference-card.html" . }}
+      {{ end }}
+    </ul>
+    <p class="more"><a href="{{ "/conferences/" | relURL }}">See all</a></p>
+  {{ else }}
+    <p class="muted">No conferences yet.</p>
+  {{ end }}
+</section>

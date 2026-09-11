@@ -1,0 +1,14 @@
+<section class="articles-preview">
+  <h2>Articles</h2>
+  {{ $articles := (where site.RegularPages "Section" "articles").ByDate.Reverse }}
+  {{ if $articles }}
+    <div class="articles-grid">
+      {{ range first 3 $articles }}
+        {{ partial "article-list-item.html" . }}
+      {{ end }}
+    </div>
+    <p class="more"><a href="{{ "/articles/" | relURL }}">See all</a></p>
+  {{ else }}
+    <p class="muted">No articles yet.</p>
+  {{ end }}
+</section>

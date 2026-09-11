@@ -7,6 +7,8 @@ categories: ["papers"]
 aliases:
   - /whitepapers/BigTable
   - /whitepapers/BigTable/
+  - /posts/bigtable
+  - /posts/bigtable/
 drive: "https://drive.google.com/file/d/REPLACE_ME_BIGTABLE/view"
 ---
 

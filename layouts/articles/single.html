@@ -1,0 +1,14 @@
+{{ define "main" }}
+  <article class="article">
+    <header class="page-header">
+      <h1>{{ .Title }}</h1>
+      <p class="meta">
+        {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "02-01-2006" }}</time>{{ end }}
+        {{ partial "post-tags.html" . }}
+      </p>
+    </header>
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </article>
+{{ end }}
