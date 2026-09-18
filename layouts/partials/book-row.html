@@ -1,0 +1,15 @@
+{{ $book := .book }}
+{{ $meta := .meta | default ($book.source | default $book.authors) }}
+{{ if $book.url }}
+<a href="{{ $book.url | safeURL }}"{{ if partial "is-external.html" $book.url }} target="_blank" rel="noopener noreferrer"{{ end }}>
+  <span class="tags-index-num">{{ printf "%02d" .index }}</span>
+  <span class="tags-index-name">{{ $book.title }}</span>
+  <span class="tags-index-count">{{ $meta }}</span>
+</a>
+{{ else }}
+<span class="tags-index-row">
+  <span class="tags-index-num">{{ printf "%02d" .index }}</span>
+  <span class="tags-index-name">{{ $book.title }}</span>
+  <span class="tags-index-count">{{ $meta }}</span>
+</span>
+{{ end }}
