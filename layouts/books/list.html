@@ -1,0 +1,44 @@
+{{ define "main" }}
+  <header class="page-header tags-header">
+    <p class="tags-kicker">Books</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}
+      <div class="tags-lead">{{ . }}</div>
+    {{ end }}
+  </header>
+  {{ $reading := slice }}
+  {{ $read := slice }}
+  {{ range hugo.Data.books }}
+    {{ if eq (.status | default "reading") "read" }}
+      {{ $read = $read | append . }}
+    {{ else }}
+      {{ $reading = $reading | append . }}
+    {{ end }}
+  {{ end }}
+  {{ if or $reading $read }}
+    {{ with $reading }}
+      <section class="tag-group" aria-labelledby="books-reading">
+        <h2 id="books-reading">In progress</h2>
+        <ol class="tags-index">
+          {{ range $i, $book := . }}
+            <li>{{ partial "book-row.html" (dict "book" $book "index" (add $i 1) "meta" "In progress") }}</li>
+          {{ end }}
+        </ol>
+      </section>
+    {{ end }}
+    <section class="tag-group" aria-labelledby="books-read">
+      <h2 id="books-read">Already read</h2>
+      {{ with $read }}
+        <ol class="tags-index">
+          {{ range $i, $book := . }}
+            <li>{{ partial "book-row.html" (dict "book" $book "index" (add $i 1) "meta" "Read") }}</li>
+          {{ end }}
+        </ol>
+      {{ else }}
+        <p class="muted">Nothing marked as read yet.</p>
+      {{ end }}
+    </section>
+  {{ else }}
+    <p class="muted">No technical books yet.</p>
+  {{ end }}
+{{ end }}

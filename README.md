@@ -49,22 +49,36 @@ Edit [`data/conferences.yaml`](data/conferences.yaml). It is a YAML list. Append
   topics: [systems, go]
 ```
 
+## Add a technical book
+
+Edit [`data/books.yaml`](data/books.yaml). It is a YAML list (`site.Data.books`). Append an item:
+
+```yaml
+- title: Book title
+  authors: Author name
+  source: O'Reilly
+  url: https://...
+  status: reading          # reading | read
+```
+
+`status: reading` shows on the homepage and under **In progress**. `status: read` shows under **Already read**. Goodreads books stay on the homepage shelf and are not listed here.
+
 ## Currently reading
 
 The homepage section has two sources:
 
-1. **Manual items** (papers, books, anything) — edit [`data/reading.yaml`](data/reading.yaml):
+1. **Manual items** (papers and articles) — edit [`data/reading.yaml`](data/reading.yaml):
 
    ```yaml
    items:
      - title: "MapReduce: Simplified Data Processing on Large Clusters"
        authors: "Dean and Ghemawat"
-       type: paper          # paper | book | article
+       type: paper          # paper | article
        url: https://...
        source: OSDI 2004
    ```
 
-   An empty `items:` list hides the manual group.
+   An empty `items:` list hides the manual group. Technical books come from [`data/books.yaml`](data/books.yaml) (`status: reading`).
 
 2. **Goodreads currently-reading** — fetched at build time from user `190374561`. No client-side JavaScript. If Goodreads is down, the rest of the site still builds.
 

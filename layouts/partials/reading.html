@@ -6,13 +6,15 @@
     {{ with .items }}{{ $manual = . }}{{ end }}
   {{ end }}
   {{ $papers := slice }}
-  {{ $books := slice }}
   {{ range $manual }}
-    {{ $kind := .type | default "item" }}
-    {{ if eq $kind "book" }}
-      {{ $books = $books | append . }}
-    {{ else }}
+    {{ if ne (.type | default "item") "book" }}
       {{ $papers = $papers | append . }}
+    {{ end }}
+  {{ end }}
+  {{ $books := slice }}
+  {{ range hugo.Data.books }}
+    {{ if eq (.status | default "reading") "reading" }}
+      {{ $books = $books | append . }}
     {{ end }}
   {{ end }}
 
@@ -31,10 +33,10 @@
 
   {{ if $books }}
     <div class="reading-group">
-      <h3>Other books</h3>
+      <h3><a href="{{ "/books/" | relURL }}">Technical books</a></h3>
       <ul class="reading-list">
         {{ range $books }}
-          {{ partial "reading-row.html" . }}
+          {{ partial "reading-row.html" (merge . (dict "type" "book")) }}
         {{ end }}
       </ul>
     </div>
