@@ -3,7 +3,3 @@ items:
     type: paper
     url: "https://queue.acm.org/doi/pdf/10.1145/3012426.3025012"
     source: ACM Queue
-  - title: "Chain-of-thought prompting elicits reasoning in large language models"
-    type: paper
-    url: "https://arxiv.org/pdf/2201.11903"
-    source: arXiv
