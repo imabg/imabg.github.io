@@ -1,8 +1,4 @@
 items:
-  - title: "Local-first software: you own your data, in spite of the cloud"
-    type: paper
-    url: "https://dl.acm.org/doi/10.1145/3359591.3359737"
-    source: ACM Splash
   - title: "Language Models are Unsupervised Multitask Learners"
     type: paper
     url: "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf"
