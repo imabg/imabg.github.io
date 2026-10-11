@@ -48,17 +48,21 @@
     transform var(--duration-instant) var(--ease-out);
 }
 
-.tags-index a:hover {
-  color: inherit;
-  background: var(--accent-soft);
+@media (hover: hover) and (pointer: fine) {
+  .tags-index a:hover {
+    color: inherit;
+    background: var(--accent-soft);
+  }
 }
 
 .tags-index a:active {
   transform: scale(0.995);
 }
 
-.tags-index a:hover .tags-index-name {
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .tags-index a:hover .tags-index-name {
+    color: var(--accent);
+  }
 }
 
 .tags-index-num {

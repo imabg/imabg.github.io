@@ -46,10 +46,37 @@
   font-weight: 500;
 }
 
-.hero-bio a:hover {
-  color: var(--accent-strong);
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
+@media (hover: hover) and (pointer: fine) {
+  .hero-bio a:hover {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+}
+
+/* Hero grid: intro copy + photo. Text leads, photo anchors — same path in/out, no extra motion. */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-media {
+  margin: 0;
+  min-width: 0;
+}
+
+.hero-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 68% 22%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  background: var(--card);
 }
 
 .reading {
@@ -93,8 +120,10 @@
   color: inherit;
 }
 
-.reading h3 a:hover {
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .reading h3 a:hover {
+    color: var(--accent);
+  }
 }
 
 .reading-list {
@@ -124,8 +153,10 @@
   border-bottom: 1px solid var(--border);
 }
 
-.reading-row:hover {
-  background: var(--accent-soft);
+@media (hover: hover) and (pointer: fine) {
+  .reading-row:hover {
+    background: var(--accent-soft);
+  }
 }
 
 .reading-row:active {
@@ -161,8 +192,10 @@
   line-height: 1.32;
 }
 
-.reading-meta a:hover {
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .reading-meta a:hover {
+    color: var(--accent);
+  }
 }
 
 .reading-title cite,
@@ -199,8 +232,10 @@
   border-radius: 0;
 }
 
-.reading-shelf .reading-row:hover {
-  background: transparent;
+@media (hover: hover) and (pointer: fine) {
+  .reading-shelf .reading-row:hover {
+    background: transparent;
+  }
 }
 
 .reading-shelf .reading-cover {
@@ -213,9 +248,11 @@
     box-shadow var(--duration-snappy) var(--spring);
 }
 
-.reading-shelf .reading-row:hover .reading-cover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+@media (hover: hover) and (pointer: fine) {
+  .reading-shelf .reading-row:hover .reading-cover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 .reading-shelf .reading-title {
@@ -225,6 +262,16 @@
 @media (max-width: 600px) {
   .hero {
     padding-top: 1rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .hero-media {
+    order: -1;
+    max-width: 28rem;
   }
 
   .hero-title {

@@ -118,6 +118,7 @@ html[data-theme="light"] {
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
   font-optical-sizing: auto;
   scroll-behavior: smooth;
 }
@@ -125,7 +126,12 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  padding: 0.9rem 1rem 1.5rem;
+  min-height: 100dvh;
+  padding:
+    calc(0.9rem + env(safe-area-inset-top, 0px))
+    calc(1rem + env(safe-area-inset-right, 0px))
+    calc(1.5rem + env(safe-area-inset-bottom, 0px))
+    calc(1rem + env(safe-area-inset-left, 0px));
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
@@ -177,6 +183,7 @@ body {
   flex-direction: column;
   width: min(var(--max), 100%);
   min-height: calc(100vh - 2.4rem);
+  min-height: calc(100dvh - 2.4rem);
   margin: 0 auto;
   padding: 0 0 1rem;
   background: transparent;
@@ -194,11 +201,46 @@ a {
   text-decoration: none;
 }
 
+/* Touch: no 300ms delay, no sticky hover without capability (see below) */
+button,
+a,
+[role="button"] {
+  touch-action: manipulation;
+}
+
+/* Controls are not content: no long-press select/callout on tap targets */
+.theme-toggle,
+.site-nav a {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
 .prose a,
 .reading-meta a,
 .more a {
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
+}
+
+/* Section footers ("See all"): one shared style — same label, same look, everywhere. */
+.more {
+  margin: 1.05rem 0 0;
+}
+
+.more a {
+  color: var(--accent);
+  font-weight: 600;
+  padding: 0.4rem 0;
+  border-radius: 6px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .more a:hover {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
 }
 
 /* ── Type scale: tracking + leading are size-specific, never one value ── */
@@ -235,7 +277,7 @@ h3 {
 
 .site-header {
   position: sticky;
-  top: 0.75rem;
+  top: calc(0.75rem + env(safe-area-inset-top, 0px));
   z-index: 20;
   display: flex;
   align-items: center;
@@ -319,9 +361,11 @@ h3 {
     transform var(--duration-instant) var(--ease-out);
 }
 
-.site-nav a:hover {
-  color: var(--fg);
-  background: var(--accent-soft);
+@media (hover: hover) and (pointer: fine) {
+  .site-nav a:hover {
+    color: var(--fg);
+    background: var(--accent-soft);
+  }
 }
 
 .site-nav a[aria-current="page"] {
@@ -353,9 +397,11 @@ h3 {
     border-color var(--duration-instant) var(--ease-out);
 }
 
-.theme-toggle:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 }
 
 .theme-toggle:active {
@@ -427,8 +473,10 @@ html[data-theme="light"] .theme-toggle .icon-moon {
   transition: color var(--duration-instant) var(--ease-out);
 }
 
-.site-footer a:hover {
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .site-footer a:hover {
+    color: var(--accent);
+  }
 }
 
 .social-link {
@@ -459,8 +507,10 @@ html[data-theme="light"] .theme-toggle .icon-moon {
   vertical-align: unset;
 }
 
-a:hover .ext-icon {
-  opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+  a:hover .ext-icon {
+    opacity: 1;
+  }
 }
 
 .visually-hidden {
@@ -585,10 +635,12 @@ a:hover .ext-icon {
   font-weight: 500;
 }
 
-.prose a:hover {
-  color: var(--accent-strong);
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
+@media (hover: hover) and (pointer: fine) {
+  .prose a:hover {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
 }
 
 /* Cards lift 1:1 with intent: press is instant, hover telegraphs direction */
@@ -636,19 +688,24 @@ a:hover .ext-icon {
 
 @media (max-width: 600px) {
   body {
-    padding: 0.6rem 0.6rem 1.25rem;
+    padding:
+      calc(0.6rem + env(safe-area-inset-top, 0px))
+      calc(0.6rem + env(safe-area-inset-right, 0px))
+      calc(1.25rem + env(safe-area-inset-bottom, 0px))
+      calc(0.6rem + env(safe-area-inset-left, 0px));
     font-size: 1rem;
   }
 
   .wrap {
     min-height: calc(100vh - 1.2rem);
+    min-height: calc(100dvh - 1.2rem);
   }
 
   .site-header {
     flex-wrap: wrap;
     align-items: center;
     gap: 0.6rem;
-    top: 0.6rem;
+    top: calc(0.6rem + env(safe-area-inset-top, 0px));
     margin-bottom: 1.75rem;
     padding: 0.6rem 0.6rem 0.6rem 1rem;
   }
