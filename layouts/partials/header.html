@@ -4,12 +4,20 @@
   {{ else }}
     <p class="site-title"><a href="{{ "/" | relURL }}">Abhay<span class="wordmark-dot">.</span></a></p>
   {{ end }}
+  <nav class="site-nav" id="site-nav" aria-label="Main">
+    {{ range site.Menus.main }}
+      <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
+    {{ end }}
+  </nav>
   <div class="site-header-end">
-    <nav class="site-nav" aria-label="Main">
-      {{ range site.Menus.main }}
-        <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
-      {{ end }}
-    </nav>
+    <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
+        <path d="M6 6l12 12M18 6L6 18"/>
+      </svg>
+    </button>
     <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle color theme">
       <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path fill="currentColor" d="M12.1 22c5.1 0 9.3-3.8 9.9-8.7-1.3.6-2.7.9-4.2.9-5.4 0-9.8-4.4-9.8-9.8 0-1.5.3-2.9.9-4.2C4 1.8.2 6 .2 11.1.2 17.1 5.1 22 12.1 22z"/>
