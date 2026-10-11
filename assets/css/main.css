@@ -210,6 +210,7 @@ a,
 
 /* Controls are not content: no long-press select/callout on tap targets */
 .theme-toggle,
+.nav-toggle,
 .site-nav a {
   user-select: none;
   -webkit-user-select: none;
@@ -345,6 +346,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  margin-left: auto;
   font-family: var(--font-ui);
 }
 
@@ -378,7 +380,8 @@ h3 {
   transform: scale(0.96);
 }
 
-.theme-toggle {
+.theme-toggle,
+.nav-toggle {
   appearance: none;
   background: var(--accent-soft);
   border: 1px solid var(--toolbar-border);
@@ -404,13 +407,32 @@ h3 {
   }
 }
 
-.theme-toggle:active {
+.theme-toggle:active,
+.nav-toggle:active {
   transform: scale(0.92);
 }
 
-.theme-toggle svg {
+.theme-toggle svg,
+.nav-toggle svg {
   width: 1rem;
   height: 1rem;
+}
+
+/* Collapsible nav: toggle hidden on desktop, icon swaps with state */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle .icon-close {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .icon-menu {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .icon-close {
+  display: block;
 }
 
 .theme-toggle .icon-sun {
@@ -715,19 +737,34 @@ html[data-theme="light"] .theme-toggle .icon-moon {
   }
 
   .site-header-end {
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
     gap: 0.5rem;
-    width: 100%;
+    width: auto;
+    margin-left: auto;
   }
 
-  .site-nav {
-    flex-wrap: wrap;
+  .nav-toggle {
+    display: grid;
+  }
+
+  /* Collapsed by default (only when JS is present — no-JS keeps nav visible) */
+  .site-header[data-nav] .site-nav {
+    display: none;
+  }
+
+  .site-header[data-nav-open] .site-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     gap: 0.15rem;
+    width: 100%;
+    margin-left: 0;
   }
 
-  .site-nav a {
-    padding: 0.55rem 0.7rem;
+  .site-header[data-nav-open] .site-nav a {
+    padding: 0.8rem 0.75rem;
+    font-size: 1rem;
   }
 
   h1 {
@@ -775,7 +812,8 @@ html[data-theme="light"] .theme-toggle .icon-moon {
   }
 
   .site-nav a:active,
-  .theme-toggle:active {
+  .theme-toggle:active,
+  .nav-toggle:active {
     transform: none;
   }
 }

@@ -17,5 +17,10 @@
       {{ $theme = $theme | minify | fingerprint }}
     {{ end }}
     <script src="{{ $theme.RelPermalink }}" defer{{ if hugo.IsProduction }} integrity="{{ $theme.Data.Integrity }}"{{ end }}></script>
+    {{ $nav := resources.Get "js/nav.js" }}
+    {{ if hugo.IsProduction }}
+      {{ $nav = $nav | minify | fingerprint }}
+    {{ end }}
+    <script src="{{ $nav.RelPermalink }}" defer{{ if hugo.IsProduction }} integrity="{{ $nav.Data.Integrity }}"{{ end }}></script>
   </body>
 </html>
