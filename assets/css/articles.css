@@ -1,3 +1,6 @@
+/* Articles: same material language as papers — things that look the same
+   behave the same (Familiarity). Symmetric hover/press paths. */
+
 body:has(.articles-archive) .wrap {
   --max: 66rem;
 }
@@ -8,13 +11,15 @@ body:has(.articles-archive) .wrap {
 }
 
 .articles-preview {
-  margin-top: 2.85rem;
+  margin-top: 2.75rem;
 }
 
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.15rem;
+  gap: 1rem;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 280px;
 }
 
 .articles-archive .articles-grid {
@@ -24,34 +29,43 @@ body:has(.articles-archive) .wrap {
 .article-card {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.45rem;
   height: 100%;
   min-width: 0;
-  padding: 1.15rem 1.2rem 1.25rem;
-  background: var(--canvas);
+  padding: 1.2rem 1.25rem 1.3rem;
+  background: var(--card);
   color: var(--fg);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-snappy) var(--spring),
+    box-shadow var(--duration-snappy) var(--spring),
+    border-color var(--duration-instant) var(--ease-out);
+}
+
+.article-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.article-card:active {
+  transform: scale(0.98);
+  transition-duration: var(--duration-instant);
 }
 
 .article-card-heading {
   font-family: var(--font-display);
-  font-size: 1.12rem;
-  font-style: italic;
+  font-size: 1.08rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.5;
+  letter-spacing: -0.013em;
+  line-height: 1.42;
   margin: 0;
-  padding-bottom: 0.12em;
-  overflow: visible;
-  text-rendering: geometricPrecision;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 .article-card-title {
   color: var(--fg);
-  overflow: visible;
-  text-rendering: geometricPrecision;
 }
 
 .article-card-title:hover {
@@ -61,13 +75,13 @@ body:has(.articles-archive) .wrap {
 .article-card-meta {
   margin: 0;
   font-family: var(--font-ui);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--muted);
 }
 
 .article-card-date {
   font-variant-numeric: tabular-nums;
-  font-weight: 650;
+  font-weight: 600;
   color: var(--accent);
 }
 
@@ -76,24 +90,39 @@ body:has(.articles-archive) .wrap {
   flex-wrap: wrap;
   gap: 0.35rem;
   list-style: none;
-  margin: 0.15rem 0 0;
+  margin: 0.2rem 0 0;
   padding: 0;
 }
 
 .article-topic {
   font-family: var(--font-ui);
   font-size: 0.72rem;
-  font-weight: 650;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--fg);
-  border: 1px solid var(--border);
-  padding: 0.14rem 0.45rem;
+  color: var(--muted);
+  background: var(--accent-soft);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.22rem 0.6rem;
 }
 
 .articles-preview .more {
   margin: 1.05rem 0 0;
   font-family: var(--font-body);
+}
+
+.articles-preview .more a {
+  color: var(--accent);
+  font-weight: 600;
+  padding: 0.4rem 0;
+  border-radius: 6px;
+}
+
+.articles-preview .more a:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
 }
 
 .article .meta .post-tags {
@@ -116,9 +145,9 @@ body:has(.articles-archive) .wrap {
 }
 
 .article .prose {
-  max-width: 42rem;
+  max-width: 43rem;
   font-family: var(--font-body);
-  font-size: 1.05rem;
+  font-size: 1.0625rem;
   line-height: 1.7;
   color: var(--fg);
 }
@@ -148,6 +177,7 @@ body:has(.articles-archive) .wrap {
 }
 
 .article .prose a:hover {
+  color: var(--accent-strong);
   text-decoration: underline;
   text-underline-offset: 0.18em;
 }
