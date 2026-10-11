@@ -1,11 +1,18 @@
+/* Conferences: inset grouped list. Proximity implies relationship. */
+
 .conferences-preview {
-  margin-top: 2.85rem;
+  margin-top: 2.75rem;
+}
+
+.conferences-preview > h2,
+.conferences-archive h1 {
+  letter-spacing: -0.02em;
 }
 
 .conference-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-  gap: 0.15rem 1.1rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.15rem 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -14,8 +21,20 @@
 
 .conference-card {
   margin: 0;
-  padding: 0.75rem 0 0.85rem;
+  padding: 0.8rem 0.75rem 0.9rem;
+  margin-inline: -0.75rem;
   border-bottom: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration-instant) var(--ease-out),
+    transform var(--duration-instant) var(--ease-out);
+}
+
+.conference-card:hover {
+  background: var(--accent-soft);
+}
+
+.conference-card:active {
+  transform: scale(0.995);
 }
 
 .conference-card-head {
@@ -29,36 +48,41 @@
 
 .conference-card-title {
   font-family: var(--font-display);
-  font-size: 1.02rem;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.011em;
   line-height: 1.45;
-  padding-bottom: 0.08em;
-  overflow: visible;
-  text-rendering: geometricPrecision;
   color: var(--fg);
+}
+
+.conference-card-title a:hover {
+  color: var(--accent);
 }
 
 .conference-year {
   font-family: var(--font-ui);
   font-variant-numeric: tabular-nums;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
+  font-weight: 500;
   color: var(--muted);
 }
 
 .conference-topics {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.28rem;
-  margin: 0.4rem 0 0;
+  gap: 0.3rem;
+  margin: 0.45rem 0 0;
 }
 
 .conference-chip {
   font-family: var(--font-ui);
   font-size: 0.72rem;
+  font-weight: 500;
   line-height: 1.3;
+  letter-spacing: 0.02em;
   color: var(--muted);
-  border: 1px solid var(--border);
-  padding: 0.1rem 0.42rem;
+  background: var(--accent-soft);
+  border: 0;
+  padding: 0.16rem 0.55rem;
   border-radius: 999px;
 }
