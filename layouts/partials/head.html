@@ -11,16 +11,19 @@
   }
 })();
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} — {{ site.Title }}{{ end }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
 <meta name="author" content="{{ site.Params.author }}">
 <link rel="canonical" href="{{ .Permalink }}">
-<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="16x16 32x32 48x48">
+<link rel="icon" href="{{ "favicon-32x32.png" | relURL }}" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}" sizes="180x180">
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ "profile-1600.jpg" | absURL }}">
 <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 {{ $css := resources.Get "css/main.css" }}

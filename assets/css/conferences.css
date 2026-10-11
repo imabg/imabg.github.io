@@ -1,4 +1,4 @@
-/* Conferences: inset grouped list. Proximity implies relationship. */
+/* Conferences: same material cards as papers/articles. */
 
 .conferences-preview {
   margin-top: 2.75rem;
@@ -12,29 +12,41 @@
 .conference-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: 0.15rem 1rem;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--border);
 }
 
 .conference-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  height: 100%;
+  min-width: 0;
   margin: 0;
-  padding: 0.8rem 0.75rem 0.9rem;
-  margin-inline: -0.75rem;
-  border-bottom: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  transition: background-color var(--duration-instant) var(--ease-out),
-    transform var(--duration-instant) var(--ease-out);
+  padding: 1.2rem 1.25rem 1.3rem;
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-snappy) var(--spring),
+    box-shadow var(--duration-snappy) var(--spring),
+    border-color var(--duration-instant) var(--ease-out);
 }
 
-.conference-card:hover {
-  background: var(--accent-soft);
+@media (hover: hover) and (pointer: fine) {
+  .conference-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  }
 }
 
 .conference-card:active {
-  transform: scale(0.995);
+  transform: scale(0.98);
+  transition-duration: var(--duration-instant);
 }
 
 .conference-card-head {
@@ -55,8 +67,10 @@
   color: var(--fg);
 }
 
-.conference-card-title a:hover {
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .conference-card-title a:hover {
+    color: var(--accent);
+  }
 }
 
 .conference-year {
@@ -71,7 +85,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
-  margin: 0.45rem 0 0;
+  margin: 0;
 }
 
 .conference-chip {

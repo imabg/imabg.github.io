@@ -43,10 +43,12 @@ body:has(.papers-archive) .wrap {
     border-color var(--duration-instant) var(--ease-out);
 }
 
-.paper-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+@media (hover: hover) and (pointer: fine) {
+  .paper-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  }
 }
 
 /* Response on press: instant, continuous — never locked out */
@@ -69,8 +71,10 @@ body:has(.papers-archive) .wrap {
   color: var(--fg);
 }
 
-.paper-card-title:hover {
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .paper-card-title:hover {
+    color: var(--accent);
+  }
 }
 
 .paper-card-authors {
